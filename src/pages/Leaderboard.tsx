@@ -11,6 +11,7 @@ import silverMedal from "@/assets/silver-medal.gif";
 import bronzeMedal from "@/assets/bronze-medal.gif";
 import { Input } from "@/components/ui/input";
 import { GiveawaySection, LeaderboardPeriod } from "@/components/GiveawaySection";
+import RaffleAdmin from "@/components/RaffleAdmin";
 
 // Import community images
 import bearImage from "@/assets/communities/bear.jpg";
@@ -197,6 +198,17 @@ const Leaderboard = () => {
       {/* Giveaway Section */}
       <section className="px-4 md:px-6 pb-8">
         <div className="max-w-4xl mx-auto space-y-6">
+          {/* Host Raffle Admin - Only show for btctalk */}
+          {communityId === "btctalk" && (
+            <div className="bg-card/80 backdrop-blur-sm rounded-lg p-1">
+              <RaffleAdmin
+                communityName={communityName}
+                totalMembers="15.2K"
+                onClose={() => {}} // No close needed since it's embedded
+              />
+            </div>
+          )}
+          
           <GiveawaySection 
             isLive={true}
             endTime={new Date(Date.now() + 3 * 60 * 60 * 1000)} // 3 hours from now

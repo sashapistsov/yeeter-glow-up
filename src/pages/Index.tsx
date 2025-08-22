@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Users, TrendingUp, Star, Search, Settings } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import RaffleAdmin from "@/components/RaffleAdmin";
+// import RaffleAdmin from "@/components/RaffleAdmin";
 
 // Import community images
 import bearImage from "@/assets/communities/bear.jpg";
@@ -129,8 +129,6 @@ const communities = [
 const Index = () => {
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showRaffleAdmin, setShowRaffleAdmin] = useState(false);
-  const [selectedCommunity, setSelectedCommunity] = useState<typeof communities[0] | null>(null);
 
   const filteredCommunities = communities.filter(community =>
     community.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -243,20 +241,6 @@ const Index = () => {
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                {community.id === "btctalk" && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="absolute top-2 right-2 h-8 w-8 p-0 bg-primary/10 hover:bg-primary/20 border border-primary/30 z-10"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setSelectedCommunity(community);
-                      setShowRaffleAdmin(true);
-                    }}
-                  >
-                    <Settings className="h-4 w-4 text-primary" />
-                  </Button>
-                )}
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="relative">
@@ -298,18 +282,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Raffle Admin Modal */}
-      {showRaffleAdmin && selectedCommunity && (
-        <RaffleAdmin
-          communityName={selectedCommunity.name}
-          totalMembers={selectedCommunity.members}
-          onClose={() => {
-            setShowRaffleAdmin(false);
-            setSelectedCommunity(null);
-          }}
-        />
-      )}
 
       {/* Footer */}
       <footer className="px-6 py-12 border-t border-secondary/20">
