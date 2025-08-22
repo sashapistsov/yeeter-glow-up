@@ -203,7 +203,15 @@ const Index = () => {
           <div className={`flex flex-col sm:flex-row gap-4 justify-center animate-slide-up ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000 delay-600`}>
-            <Button size="lg" className="bg-primary hover:bg-primary/90 shadow-glow">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 shadow-glow"
+              onClick={() => {
+                document.getElementById('communities-section')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
+            >
               <Trophy className="mr-2 h-5 w-5" />
               Explore Communities
             </Button>
@@ -217,7 +225,7 @@ const Index = () => {
       </section>
 
       {/* Communities Grid */}
-      <section className="px-6 py-12 md:py-20">
+      <section id="communities-section" className="px-6 py-12 md:py-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 md:mb-16">
             <h2 className="text-4xl font-bold mb-4">Communities</h2>
