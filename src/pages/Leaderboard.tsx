@@ -200,13 +200,11 @@ const Leaderboard = () => {
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Host Raffle Admin - Only show for btctalk */}
           {communityId === "btctalk" && (
-            <div className="bg-card/80 backdrop-blur-sm rounded-lg p-1">
-              <RaffleAdmin
-                communityName={communityName}
-                totalMembers="15.2K"
-                onClose={() => {}} // No close needed since it's embedded
-              />
-            </div>
+            <RaffleAdmin
+              communityName={communityName}
+              totalMembers="15.2K"
+              onClose={() => {}} // No close needed since it's embedded
+            />
           )}
           
           <GiveawaySection 
