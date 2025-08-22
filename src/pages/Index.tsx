@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Users, TrendingUp, Star, Search } from "lucide-react";
+import { Trophy, Users, TrendingUp, Star, Search, Settings, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 // Import community images
@@ -37,7 +37,8 @@ const communities = [
     id: "btctalk",
     name: "Bitcoin Talk",
     image: bitcoinTalkImage,
-    members: "15.2K"
+    members: "15.2K",
+    isAdmin: true
   },
   {
     id: "bodoggos",
@@ -255,6 +256,11 @@ const Index = () => {
                           <Star className="h-5 w-5 text-primary fill-primary" />
                         </div>
                       )}
+                      {community.isAdmin && (
+                        <div className="absolute -bottom-1 -right-1 bg-gradient-primary rounded-full p-1">
+                          <Settings className="h-3 w-3 text-primary-foreground" />
+                        </div>
+                      )}
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors text-foreground">
@@ -267,14 +273,28 @@ const Index = () => {
                     </div>
                   </div>
                   
-                  <Link to={`/leaderboards/${community.id}`}>
-                    <Button 
-                      className="w-full bg-secondary hover:bg-primary transition-all duration-300 group-hover:bg-primary text-secondary-foreground group-hover:text-primary-foreground"
-                    >
-                      View Rankings
-                      <Trophy className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
+                  <div className="space-y-2">
+                    <Link to={`/leaderboards/${community.id}`}>
+                      <Button 
+                        className="w-full bg-secondary hover:bg-primary transition-all duration-300 group-hover:bg-primary text-secondary-foreground group-hover:text-primary-foreground"
+                      >
+                        View Rankings
+                        <Trophy className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                    
+                    {community.isAdmin && (
+                      <Link to={`/host-raffle/${community.id}`}>
+                        <Button 
+                          variant="outline"
+                          className="w-full border-primary/30 text-primary hover:bg-primary/10"
+                        >
+                          <Sparkles className="mr-2 h-4 w-4" />
+                          Host Raffle
+                        </Button>
+                      </Link>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             ))}
