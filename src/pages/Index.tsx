@@ -181,9 +181,11 @@ const Index = () => {
               <Trophy className="mr-2 h-5 w-5" />
               Explore Communities
             </Button>
-            <Button size="lg" variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
-              Apply to create your own
-            </Button>
+            <Link to="/apply">
+              <Button size="lg" variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
+                Apply to create your own
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
