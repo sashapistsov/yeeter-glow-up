@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { Trophy, ArrowLeft, Medal, Crown, Award, TrendingUp, Users, Search } from "lucide-react";
 import goldMedal from "@/assets/gold-medal.gif";
@@ -110,6 +109,12 @@ const Leaderboard = () => {
       default:
         return "border-muted-foreground/30 text-muted-foreground";
     }
+  };
+
+  const getBadgeImage = (rank: number) => {
+    if (rank <= 3) return "/lovable-uploads/241f255b-a9aa-42b1-a4dc-da2c29ec8427.png"; // Diamond
+    if (rank <= 7) return "/lovable-uploads/f65e140f-e855-4167-8f1e-f428ff0cf7ec.png"; // Silver
+    return "/lovable-uploads/b23f9a0d-a110-4ce0-9bae-e84de426c673.png"; // Bronze
   };
 
   return (
@@ -250,12 +255,13 @@ const Leaderboard = () => {
                         {getRankIcon(user.rank)}
                       </div>
                       
-                      <Avatar className="h-8 w-8 md:h-10 md:w-10 border-2 border-primary/30 flex-shrink-0">
-                        <AvatarImage src={user.avatar} />
-                        <AvatarFallback className="bg-primary text-primary-foreground font-bold text-xs md:text-sm">
-                          {user.name.charAt(0)}
-                        </AvatarFallback>
-                      </Avatar>
+                      <div className="h-8 w-8 md:h-10 md:w-10 flex-shrink-0 rounded-full overflow-hidden bg-secondary/20">
+                        <img 
+                          src={getBadgeImage(user.rank)} 
+                          alt="Casino Badge"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       
                       <div className="min-w-0 flex-1">
                         <h3 className="font-semibold text-sm md:text-base text-foreground truncate">{user.name}</h3>
