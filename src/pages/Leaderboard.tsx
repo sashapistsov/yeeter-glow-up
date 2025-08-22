@@ -114,8 +114,8 @@ const Leaderboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero overflow-x-hidden">
-      {/* Spotlight Background Effect - Header Area Only */}
-      <div className="absolute top-0 left-0 right-0 h-96 z-0">
+      {/* Spotlight Background Effect - Extended Header Area */}
+      <div className="absolute top-0 left-0 right-0 h-[500px] z-0">
         <CommunitySpotlight />
       </div>
 
@@ -172,7 +172,7 @@ const Leaderboard = () => {
       </nav>
 
       {/* Header */}
-      <section className="relative px-4 md:px-6 py-12 overflow-hidden z-40">
+      <section className="relative px-4 md:px-6 py-16 overflow-hidden z-40">
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className={`text-center mb-8 animate-slide-up ${
