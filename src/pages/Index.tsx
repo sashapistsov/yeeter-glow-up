@@ -74,7 +74,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-hero">
       {/* Navigation */}
-      <nav className="relative z-50 p-6">
+      <nav className="relative z-50 p-6 bg-transparent">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <img 
@@ -98,7 +98,8 @@ const Index = () => {
             alt="Desert UFO Background" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/60"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
