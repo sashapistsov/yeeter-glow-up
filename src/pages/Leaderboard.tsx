@@ -243,22 +243,22 @@ const Leaderboard = () => {
                 className={`${getRankBackground(user.rank, user.status)} hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-1 animate-scale-in backdrop-blur-sm`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardContent className="p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="flex items-center justify-center w-10 h-10">
+                <CardContent className="p-3 md:p-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center space-x-2 md:space-x-3 min-w-0 flex-1">
+                      <div className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
                         {getRankIcon(user.rank)}
                       </div>
                       
-                      <Avatar className="h-10 w-10 border-2 border-primary/30">
+                      <Avatar className="h-8 w-8 md:h-10 md:w-10 border-2 border-primary/30 flex-shrink-0">
                         <AvatarImage src={user.avatar} />
-                        <AvatarFallback className="bg-primary text-primary-foreground font-bold">
+                        <AvatarFallback className="bg-primary text-primary-foreground font-bold text-xs md:text-sm">
                           {user.name.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
                       
-                      <div>
-                        <h3 className="font-semibold text-foreground">{user.name}</h3>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-semibold text-sm md:text-base text-foreground truncate">{user.name}</h3>
                         <div className="flex items-center text-muted-foreground text-xs">
                           <Badge 
                             variant="outline"
@@ -270,8 +270,8 @@ const Leaderboard = () => {
                       </div>
                     </div>
                     
-                    <div className="text-right">
-                      <div className="text-xl font-bold text-primary">
+                    <div className="text-right flex-shrink-0">
+                      <div className="text-base md:text-xl font-bold text-primary">
                         ${user.volume.toLocaleString()}
                       </div>
                       <div className="text-xs text-muted-foreground">Volume</div>
