@@ -10,15 +10,13 @@ interface RaffleAdminProps {
   communityName: string;
   totalMembers: string;
   onClose: () => void;
+  embedded?: boolean; // Add this prop to clearly indicate embedded mode
 }
 
-const RaffleAdmin = ({ communityName, totalMembers, onClose }: RaffleAdminProps) => {
+const RaffleAdmin = ({ communityName, totalMembers, onClose, embedded = false }: RaffleAdminProps) => {
   const [minRanking, setMinRanking] = useState("");
   const [minVolume, setMinVolume] = useState("");
   const [eligibleEntries, setEligibleEntries] = useState(142);
-
-  // Check if we're in modal mode (onClose is a real function) or embedded mode
-  const isModal = onClose.toString() !== "() => {}";
 
   const handleCalculateEntries = () => {
     // Mock calculation - in real app this would call an API
@@ -35,7 +33,7 @@ const RaffleAdmin = ({ communityName, totalMembers, onClose }: RaffleAdminProps)
   };
 
   // If it's embedded mode, render without the modal wrapper
-  if (!isModal) {
+  if (embedded) {
     return (
       <Card className="bg-card border-border shadow-glow">
         <CardHeader className="flex flex-row items-center justify-between">
