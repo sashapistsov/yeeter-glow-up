@@ -157,7 +157,7 @@ const Leaderboard = () => {
               placeholder="Search users..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-secondary/50 border-border focus:border-primary/50 text-foreground placeholder:text-muted-foreground"
+              className="pl-10 py-3 h-12 bg-secondary/50 border-border focus:border-primary/50 text-foreground placeholder:text-muted-foreground"
             />
           </div>
         </div>
