@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Users, TrendingUp, Star, Search } from "lucide-react";
+import { Trophy, Users, TrendingUp, Star, Search, Settings } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import RaffleAdmin from "@/components/RaffleAdmin";
 
 // Import community images
 import bearImage from "@/assets/communities/bear.jpg";
@@ -128,6 +129,8 @@ const communities = [
 const Index = () => {
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [showRaffleAdmin, setShowRaffleAdmin] = useState(false);
+  const [selectedCommunity, setSelectedCommunity] = useState<typeof communities[0] | null>(null);
 
   const filteredCommunities = communities.filter(community =>
     community.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -255,6 +258,20 @@ const Index = () => {
                           <Star className="h-5 w-5 text-primary fill-primary" />
                         </div>
                       )}
+                      {community.id === "btctalk" && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="absolute -top-2 -left-2 h-8 w-8 p-0 bg-primary/10 hover:bg-primary/20 border border-primary/30"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedCommunity(community);
+                            setShowRaffleAdmin(true);
+                          }}
+                        >
+                          <Settings className="h-4 w-4 text-primary" />
+                        </Button>
+                      )}
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors text-foreground">
@@ -281,6 +298,18 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Raffle Admin Modal */}
+      {showRaffleAdmin && selectedCommunity && (
+        <RaffleAdmin
+          communityName={selectedCommunity.name}
+          totalMembers={selectedCommunity.members}
+          onClose={() => {
+            setShowRaffleAdmin(false);
+            setSelectedCommunity(null);
+          }}
+        />
+      )}
 
       {/* Footer */}
       <footer className="px-6 py-12 border-t border-secondary/20">
