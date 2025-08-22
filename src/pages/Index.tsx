@@ -201,39 +201,20 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="px-6 py-20 bg-secondary/50">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="animate-slide-up">
-              <div className="text-4xl font-bold text-primary mb-2">50K+</div>
-              <div className="text-muted-foreground">Active Users</div>
-            </div>
-            <div className="animate-slide-up" style={{ animationDelay: '200ms' }}>
-              <div className="text-4xl font-bold text-primary mb-2">25+</div>
-              <div className="text-muted-foreground">Communities</div>
-            </div>
-            <div className="animate-slide-up" style={{ animationDelay: '400ms' }}>
-              <div className="text-4xl font-bold text-primary mb-2">1M+</div>
-              <div className="text-muted-foreground">Rankings Tracked</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="px-6 py-12 border-t border-secondary/20">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <img 
-              src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
+              src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
               alt="Boards Logo" 
               className="h-12 w-auto object-contain"
             />
           </div>
-          <p className="text-muted-foreground">
-            The ultimate community leaderboard platform
-          </p>
+          <div className="text-muted-foreground space-y-1">
+            <p>Built by DegenTy</p>
+            <p>Copyright 2025</p>
+          </div>
         </div>
       </footer>
     </div>
