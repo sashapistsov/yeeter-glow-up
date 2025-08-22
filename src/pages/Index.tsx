@@ -141,7 +141,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-hero">{/* Community Leaderboards */}  
       {/* Navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-50 p-6 bg-transparent">
+      <nav className="absolute top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-md md:bg-transparent p-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2">
             {/* Desktop logo */}
