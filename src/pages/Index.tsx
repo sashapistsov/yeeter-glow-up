@@ -179,7 +179,7 @@ const Index = () => {
             Win prizes every week
           </Badge>
           
-          <h1 className={`text-6xl md:text-8xl font-bold mb-6 animate-slide-up ${
+          <h1 className={`text-4xl md:text-6xl lg:text-8xl font-bold mb-6 animate-slide-up ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000 delay-200`}>
             <span className="text-foreground">
@@ -238,11 +238,25 @@ const Index = () => {
             {filteredCommunities.map((community, index) => (
               <Card
                 key={community.id}
-                className={`group bg-card border-border hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 animate-scale-in backdrop-blur-sm ${
+                className={`group bg-card border-border hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 animate-scale-in backdrop-blur-sm relative ${
                   community.isHighlighted ? 'border-primary/50 shadow-glow' : ''
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
+                {community.id === "btctalk" && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="absolute top-2 right-2 h-8 w-8 p-0 bg-primary/10 hover:bg-primary/20 border border-primary/30 z-10"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedCommunity(community);
+                      setShowRaffleAdmin(true);
+                    }}
+                  >
+                    <Settings className="h-4 w-4 text-primary" />
+                  </Button>
+                )}
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="relative">
@@ -257,20 +271,6 @@ const Index = () => {
                         <div className="absolute -top-1 -right-1">
                           <Star className="h-5 w-5 text-primary fill-primary" />
                         </div>
-                      )}
-                      {community.id === "btctalk" && (
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="absolute -top-2 -right-2 h-8 w-8 p-0 bg-primary/10 hover:bg-primary/20 border border-primary/30"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setSelectedCommunity(community);
-                            setShowRaffleAdmin(true);
-                          }}
-                        >
-                          <Settings className="h-4 w-4 text-primary" />
-                        </Button>
                       )}
                     </div>
                     <div className="flex-1">
