@@ -5,22 +5,24 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { Trophy, ArrowLeft, Medal, Crown, Award, TrendingUp, Users } from "lucide-react";
+import { Trophy, ArrowLeft, Medal, Crown, Award, TrendingUp, Users, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { GiveawaySection, LeaderboardPeriod } from "@/components/GiveawaySection";
 
 // Mock leaderboard data
 const generateLeaderboardData = (communityId: string) => {
+  const statuses = ["ELIGIBLE", "EXCLUDED", "ENTERED"];
   const baseData = [
-    { name: "CryptoKing2024", volume: 15420, change: "+12.5%", avatar: "/api/placeholder/40/40", rank: 1 },
-    { name: "YeetMaster", volume: 14850, change: "+8.2%", avatar: "/api/placeholder/40/40", rank: 2 },
-    { name: "DiamondHands", volume: 13990, change: "+15.1%", avatar: "/api/placeholder/40/40", rank: 3 },
-    { name: "MoonShot", volume: 12750, change: "-2.3%", avatar: "/api/placeholder/40/40", rank: 4 },
-    { name: "HODLer4Life", volume: 11900, change: "+5.7%", avatar: "/api/placeholder/40/40", rank: 5 },
-    { name: "AlphaTrade", volume: 11200, change: "+9.4%", avatar: "/api/placeholder/40/40", rank: 6 },
-    { name: "BullMarket", volume: 10850, change: "+3.1%", avatar: "/api/placeholder/40/40", rank: 7 },
-    { name: "DegenTrader", volume: 9950, change: "-1.5%", avatar: "/api/placeholder/40/40", rank: 8 },
-    { name: "GigaChad", volume: 9420, change: "+7.8%", avatar: "/api/placeholder/40/40", rank: 9 },
-    { name: "ProTrader", volume: 8900, change: "+4.2%", avatar: "/api/placeholder/40/40", rank: 10 }
+    { name: "CryptoKing2024", volume: 15420, change: "+12.5%", avatar: "/api/placeholder/40/40", rank: 1, status: "ENTERED" },
+    { name: "YeetMaster", volume: 14850, change: "+8.2%", avatar: "/api/placeholder/40/40", rank: 2, status: "ELIGIBLE" },
+    { name: "DiamondHands", volume: 13990, change: "+15.1%", avatar: "/api/placeholder/40/40", rank: 3, status: "ENTERED" },
+    { name: "MoonShot", volume: 12750, change: "-2.3%", avatar: "/api/placeholder/40/40", rank: 4, status: "EXCLUDED" },
+    { name: "HODLer4Life", volume: 11900, change: "+5.7%", avatar: "/api/placeholder/40/40", rank: 5, status: "ENTERED" },
+    { name: "AlphaTrade", volume: 11200, change: "+9.4%", avatar: "/api/placeholder/40/40", rank: 6, status: "ELIGIBLE" },
+    { name: "BullMarket", volume: 10850, change: "+3.1%", avatar: "/api/placeholder/40/40", rank: 7, status: "ELIGIBLE" },
+    { name: "DegenTrader", volume: 9950, change: "-1.5%", avatar: "/api/placeholder/40/40", rank: 8, status: "EXCLUDED" },
+    { name: "GigaChad", volume: 9420, change: "+7.8%", avatar: "/api/placeholder/40/40", rank: 9, status: "ENTERED" },
+    { name: "ProTrader", volume: 8900, change: "+4.2%", avatar: "/api/placeholder/40/40", rank: 10, status: "ELIGIBLE" }
   ];
   return baseData;
 };
@@ -40,9 +42,15 @@ const communityNames: { [key: string]: string } = {
 const Leaderboard = () => {
   const { communityId } = useParams<{ communityId: string }>();
   const [mounted, setMounted] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   
   const communityName = communityNames[communityId || ""] || "Unknown Community";
-  const leaderboardData = generateLeaderboardData(communityId || "");
+  const allLeaderboardData = generateLeaderboardData(communityId || "");
+  
+  // Filter data based on search query
+  const leaderboardData = allLeaderboardData.filter(user =>
+    user.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -55,11 +63,25 @@ const Leaderboard = () => {
     return <span className="text-lg font-bold text-muted-foreground">#{rank}</span>;
   };
 
-  const getRankBackground = (rank: number) => {
-    if (rank === 1) return "bg-gradient-to-r from-yellow-500/10 to-yellow-600/5 border-yellow-500/20 shadow-lg";
-    if (rank === 2) return "bg-gradient-to-r from-gray-400/10 to-gray-500/5 border-gray-400/20 shadow-lg";
-    if (rank === 3) return "bg-gradient-to-r from-amber-600/10 to-amber-700/5 border-amber-600/20 shadow-lg";
-    return "bg-card border-border shadow-lg";
+  const getRankBackground = (rank: number, status: string) => {
+    const baseClasses = status === "ENTERED" ? "bg-gradient-to-r from-green-500/5 to-green-600/3 border-green-500/20" : "bg-card border-border";
+    
+    if (rank === 1) return `bg-gradient-to-r from-yellow-500/10 to-yellow-600/5 border-yellow-500/20 shadow-lg ${status === "ENTERED" ? "shadow-green-500/20" : ""}`;
+    if (rank === 2) return `bg-gradient-to-r from-gray-400/10 to-gray-500/5 border-gray-400/20 shadow-lg ${status === "ENTERED" ? "shadow-green-500/20" : ""}`;
+    if (rank === 3) return `bg-gradient-to-r from-amber-600/10 to-amber-700/5 border-amber-600/20 shadow-lg ${status === "ENTERED" ? "shadow-green-500/20" : ""}`;
+    return `${baseClasses} shadow-lg`;
+  };
+  
+  const getStatusBadgeStyle = (status: string) => {
+    switch (status) {
+      case "ENTERED":
+        return "bg-green-500/20 text-green-300 border-green-500/40 hover:bg-green-500/30";
+      case "EXCLUDED":
+        return "bg-red-500/20 text-red-300 border-red-500/40 hover:bg-red-500/30";
+      case "ELIGIBLE":
+      default:
+        return "border-muted-foreground/30 text-muted-foreground";
+    }
   };
 
   return (
@@ -140,12 +162,24 @@ const Leaderboard = () => {
 
       {/* Leaderboard */}
       <section className="px-6 pb-20">
+        {/* Search */}
+        <div className="max-w-4xl mx-auto mb-6">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search users..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 bg-secondary/50 border-border focus:border-primary/50 text-foreground placeholder:text-muted-foreground"
+            />
+          </div>
+        </div>
         <div className="max-w-4xl mx-auto">
           <div className="space-y-3">
             {leaderboardData.map((user, index) => (
               <Card
                 key={user.name}
-                className={`${getRankBackground(user.rank)} hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-1 animate-scale-in backdrop-blur-sm`}
+                className={`${getRankBackground(user.rank, user.status)} hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-1 animate-scale-in backdrop-blur-sm`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardContent className="p-4">
@@ -167,14 +201,14 @@ const Leaderboard = () => {
                         <div className="flex items-center text-muted-foreground text-xs space-x-2">
                           <Badge 
                             variant="outline"
-                            className="text-xs border-muted-foreground/30 text-muted-foreground px-1.5 py-0.5"
+                            className={`text-xs px-1.5 py-0.5 ${getStatusBadgeStyle(user.status)}`}
                           >
-                            ELIGIBLE
+                            {user.status}
                           </Badge>
                           <Badge 
                             variant={user.change.startsWith('+') ? 'default' : 'destructive'}
                             className={`text-xs px-1.5 py-0.5 ${user.change.startsWith('+') 
-                              ? 'bg-green-500/20 text-green-300 border-green-500/40 hover:bg-green-500/30' 
+                              ? 'bg-blue-500/20 text-blue-300 border-blue-500/40 hover:bg-blue-500/30' 
                               : 'bg-red-500/20 text-red-300 border-red-500/40 hover:bg-red-500/30'}`}
                           >
                             {user.change}
