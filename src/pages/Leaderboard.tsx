@@ -203,8 +203,6 @@ const Leaderboard = () => {
             <RaffleAdmin
               communityName={communityName}
               totalMembers="15.2K"
-              onClose={() => {}}
-              embedded={true}
             />
           )}
           
