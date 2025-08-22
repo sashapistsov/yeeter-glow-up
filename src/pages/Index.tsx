@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Users, TrendingUp, Star } from "lucide-react";
+import { Trophy, Users, TrendingUp, Star, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 // Mock community data
 const communities = [
@@ -108,6 +109,11 @@ const communities = [
 
 const Index = () => {
   const [mounted, setMounted] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredCommunities = communities.filter(community =>
+    community.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -149,7 +155,7 @@ const Index = () => {
               mounted ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            🏆 Win prizes every week
+            Win prizes every week
           </Badge>
           
           <h1 className={`text-6xl md:text-8xl font-bold mb-6 animate-slide-up ${
@@ -187,13 +193,26 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Communities in Competition</h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-lg mb-6">
               Join the competition in your favorite communities
             </p>
+            
+            {/* Search */}
+            <div className="max-w-md mx-auto">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Search communities..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 bg-secondary/50 border-border focus:border-primary/50 text-foreground placeholder:text-muted-foreground"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {communities.map((community, index) => (
+            {filteredCommunities.map((community, index) => (
               <Card
                 key={community.id}
                 className={`group bg-card border-border hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 animate-scale-in backdrop-blur-sm ${
