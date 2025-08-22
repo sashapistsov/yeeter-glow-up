@@ -98,7 +98,7 @@ const Index = () => {
             alt="Desert UFO Background" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent from-30% via-background/70 via-60% to-background"></div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
