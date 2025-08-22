@@ -90,17 +90,15 @@ const Leaderboard = () => {
       <nav className="relative z-50 p-6 border-b border-secondary/20">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center mb-4">
-            <div className="flex items-center space-x-2">
-              <Trophy className="h-6 w-6 text-primary" />
-              <span className="text-lg font-bold bg-gradient-primary bg-clip-text text-transparent">
-                YEETER
-              </span>
-              <span className="text-lg font-bold text-primary">BOARDS</span>
-            </div>
+            <img 
+              src="/lovable-uploads/eafa8803-3886-4c9b-a642-60c01ce4f5d1.png" 
+              alt="Yeeterboards Logo" 
+              className="h-16 w-auto object-contain"
+            />
           </div>
           <div className="flex items-center justify-between">
             <Link to="/">
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-white">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Communities
               </Button>
@@ -134,10 +132,6 @@ const Leaderboard = () => {
               <div className="flex items-center space-x-2">
                 <Users className="h-5 w-5 text-primary" />
                 <span className="text-sm text-muted-foreground">2.5K members</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <TrendingUp className="h-5 w-5 text-primary" />
-                <span className="text-sm text-muted-foreground">+15% this week</span>
               </div>
             </div>
           </div>
@@ -236,11 +230,11 @@ const Leaderboard = () => {
       <footer className="px-6 py-12 border-t border-secondary/20">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <Trophy className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              YEETER
-            </span>
-            <span className="text-xl font-bold text-primary">BOARDS</span>
+            <img 
+              src="/lovable-uploads/eafa8803-3886-4c9b-a642-60c01ce4f5d1.png" 
+              alt="Yeeterboards Logo" 
+              className="h-12 w-auto object-contain"
+            />
           </div>
           <p className="text-muted-foreground">
             The ultimate community leaderboard platform
