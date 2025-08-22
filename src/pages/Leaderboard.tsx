@@ -140,18 +140,18 @@ const Leaderboard = () => {
         {/* Mobile Navigation */}
         <div className="md:hidden">
           {/* Glass Header */}
-          <div className="bg-black/20 backdrop-blur-md border-b border-white/10 p-4">
+          <div className="bg-black/40 backdrop-blur-md border-b border-white/10 p-4">
             <div className="flex justify-center">
               <img 
                 src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
                 alt="Boards Logo" 
-                className="h-8 w-auto object-contain"
+                className="h-6 w-auto object-contain"
               />
             </div>
           </div>
           
           {/* Mobile Buttons */}
-          <div className="p-4 space-y-3">
+          <div className="bg-black/30 backdrop-blur-sm p-4 space-y-3">
             <Link to="/" className="block">
               <Button variant="ghost" size="sm" className="w-full text-muted-foreground hover:text-white justify-start">
                 <ArrowLeft className="h-4 w-4 mr-2" />
