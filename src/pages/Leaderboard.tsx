@@ -151,7 +151,7 @@ const Leaderboard = () => {
               <img 
                 src="/lovable-uploads/decc2792-658a-4017-ab20-3889eca34d9e.png" 
                 alt="Boards Logo" 
-                className="h-6 w-auto object-contain"
+                className="h-8 w-auto object-contain"
               />
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
                 Connect to Kick.com
