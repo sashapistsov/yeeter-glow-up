@@ -11,7 +11,6 @@ import silverMedal from "@/assets/silver-medal.gif";
 import bronzeMedal from "@/assets/bronze-medal.gif";
 import { Input } from "@/components/ui/input";
 import { GiveawaySection, LeaderboardPeriod } from "@/components/GiveawaySection";
-import { CommunitySpotlight } from "@/components/ui/hero-spotlight";
 
 // Import community images
 import bearImage from "@/assets/communities/bear.jpg";
@@ -114,19 +113,14 @@ const Leaderboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero overflow-x-hidden">
-      {/* Spotlight Background Effect - Extended Header Area */}
-      <div className="absolute top-0 left-0 right-0 h-[500px] z-0">
-        <CommunitySpotlight />
-      </div>
-
       {/* Navigation */}
-      <nav className="relative z-50">
+      <nav className="relative z-50 border-b border-secondary/20">
         {/* Desktop Navigation */}
         <div className="hidden md:block p-6">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-white/80 hover:text-white">
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-white">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Back to Communities
                 </Button>
@@ -172,14 +166,13 @@ const Leaderboard = () => {
       </nav>
 
       {/* Header */}
-      <section className="relative px-4 md:px-6 py-16 overflow-hidden z-40">
-        
-        <div className="max-w-7xl mx-auto relative z-10">
+      <section className="px-4 md:px-6 py-12">
+        <div className="max-w-7xl mx-auto">
           <div className={`text-center mb-8 animate-slide-up ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000`}>
             <div className="flex items-center justify-center mb-4">
-              <div className="w-40 h-40 rounded-full bg-gradient-primary p-1 animate-scale-in relative z-10">
+              <div className="w-40 h-40 rounded-full bg-gradient-primary p-1 animate-scale-in">
                 <div className="w-full h-full rounded-full bg-secondary overflow-hidden flex items-center justify-center">
                   {communityImage ? (
                     <img 
@@ -195,8 +188,8 @@ const Leaderboard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 px-4 relative z-10 text-white drop-shadow-lg">{communityName}</h1>
-            <p className="text-white/80 text-base md:text-lg mb-6 hidden sm:block relative z-10 drop-shadow-lg">Community Leaderboard</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 px-4">{communityName}</h1>
+            <p className="text-muted-foreground text-base md:text-lg mb-6 hidden sm:block">Community Leaderboard</p>
           </div>
         </div>
       </section>
