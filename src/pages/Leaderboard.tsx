@@ -115,7 +115,7 @@ const Leaderboard = () => {
   return (
     <div className="min-h-screen bg-gradient-hero overflow-x-hidden">
       {/* Navigation */}
-      <nav className="relative z-50 border-b border-secondary/20">
+      <nav className="relative z-50">
         {/* Desktop Navigation */}
         <div className="hidden md:block p-6">
           <div className="max-w-7xl mx-auto">
