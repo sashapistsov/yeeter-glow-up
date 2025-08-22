@@ -84,37 +84,46 @@ const Index = () => {
             />
           </div>
           <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
-            Connect Wallet
+            Connect WITH KICK
           </Button>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative px-6 py-20">
-        <div className="max-w-7xl mx-auto text-center">
+      <section className="relative px-6 py-20 overflow-hidden">
+        {/* Background Image with Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/lovable-uploads/1ada8b13-4538-41a4-878e-8d60e406960a.png" 
+            alt="Desert UFO Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
           <Badge 
             className={`mb-6 bg-primary/10 text-primary border-primary/20 animate-fade-in ${
               mounted ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            🏆 Community Leaderboards Platform
+            🏆 Win prizes every week
           </Badge>
           
           <h1 className={`text-6xl md:text-8xl font-bold mb-6 animate-slide-up ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000 delay-200`}>
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Compete.
+            <span className="text-foreground">
+              Community
             </span>
             <br />
-            <span className="text-foreground">Rise. Win.</span>
+            <span className="bg-gradient-primary bg-clip-text text-transparent">Leaderboards</span>
           </h1>
           
           <p className={`text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-slide-up ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000 delay-400`}>
-            Track rankings, compete with friends, and climb to the top of your favorite communities.
-            The ultimate leaderboard platform for crypto communities.
+            Compete for prizes, raffles and other rewards.
           </p>
           
           <div className={`flex flex-col sm:flex-row gap-4 justify-center animate-slide-up ${
@@ -125,21 +134,9 @@ const Index = () => {
               Explore Communities
             </Button>
             <Button size="lg" variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
-              <TrendingUp className="mr-2 h-5 w-5" />
-              View Rankings
+              Apply to create your own
             </Button>
           </div>
-        </div>
-
-        {/* Floating Elements */}
-        <div className="absolute top-1/4 left-10 animate-float">
-          <Star className="h-6 w-6 text-primary/30" />
-        </div>
-        <div className="absolute top-1/3 right-20 animate-float" style={{ animationDelay: '1s' }}>
-          <Trophy className="h-8 w-8 text-primary/20" />
-        </div>
-        <div className="absolute bottom-1/4 left-1/4 animate-float" style={{ animationDelay: '2s' }}>
-          <Users className="h-7 w-7 text-primary/25" />
         </div>
       </section>
 
@@ -147,7 +144,7 @@ const Index = () => {
       <section className="px-6 py-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Featured Communities</h2>
+            <h2 className="text-4xl font-bold mb-4">Communities in Competition</h2>
             <p className="text-muted-foreground text-lg">
               Join the competition in your favorite communities
             </p>
