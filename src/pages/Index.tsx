@@ -262,7 +262,7 @@ const Index = () => {
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="absolute -top-2 -left-2 h-8 w-8 p-0 bg-primary/10 hover:bg-primary/20 border border-primary/30"
+                          className="absolute -top-2 -right-2 h-8 w-8 p-0 bg-primary/10 hover:bg-primary/20 border border-primary/30"
                           onClick={(e) => {
                             e.preventDefault();
                             setSelectedCommunity(community);
