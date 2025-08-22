@@ -83,7 +83,7 @@ const Index = () => {
               className="h-16 w-auto object-contain"
             />
           </div>
-          <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
             Connect WITH KICK
           </Button>
         </div>
