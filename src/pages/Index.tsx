@@ -164,7 +164,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative px-6 py-20 overflow-hidden">
+      <section className="relative px-6 py-12 md:py-20 overflow-hidden">
         {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -184,7 +184,7 @@ const Index = () => {
             Win prizes every week
           </Badge>
           
-          <h1 className={`text-4xl md:text-6xl lg:text-8xl font-bold mb-6 animate-slide-up ${
+          <h1 className={`text-4xl md:text-6xl lg:text-8xl font-bold mb-4 md:mb-6 animate-slide-up ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000 delay-200`}>
             <span className="text-foreground">
@@ -194,7 +194,7 @@ const Index = () => {
             <span className="bg-gradient-primary bg-clip-text text-transparent">Leaderboards</span>
           </h1>
           
-          <p className={`text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-slide-up ${
+          <p className={`text-xl text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto animate-slide-up ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000 delay-400`}>
             Compete for prizes, raffles and other rewards.
@@ -217,9 +217,9 @@ const Index = () => {
       </section>
 
       {/* Communities Grid */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-12 md:py-20">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <h2 className="text-4xl font-bold mb-4">Communities</h2>
             <p className="text-muted-foreground text-lg mb-6">
               Find your favorite community
