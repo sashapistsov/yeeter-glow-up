@@ -144,10 +144,17 @@ const Index = () => {
       <nav className="absolute top-0 left-0 right-0 z-50 p-6 bg-transparent">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2">
+            {/* Desktop logo */}
             <img 
               src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
               alt="Boards Logo" 
-              className="h-16 w-auto object-contain"
+              className="h-16 w-auto object-contain hidden md:block"
+            />
+            {/* Mobile logo */}
+            <img 
+              src="/lovable-uploads/decc2792-658a-4017-ab20-3889eca34d9e.png" 
+              alt="Boards Logo" 
+              className="h-16 w-auto object-contain md:hidden"
             />
           </div>
           <Button className="bg-primary text-primary-foreground hover:bg-primary/90">

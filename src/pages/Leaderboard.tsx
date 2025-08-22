@@ -144,7 +144,7 @@ const Leaderboard = () => {
           <div className="bg-black/40 backdrop-blur-md border-b border-white/10 p-4">
             <div className="flex justify-center">
               <img 
-                src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
+                src="/lovable-uploads/decc2792-658a-4017-ab20-3889eca34d9e.png" 
                 alt="Boards Logo" 
                 className="h-6 w-auto object-contain"
               />
