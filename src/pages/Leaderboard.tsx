@@ -113,9 +113,9 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 overflow-x-hidden">
-      {/* Spotlight Background Effect - Full Page */}
-      <div className="fixed inset-0 z-0">
+    <div className="min-h-screen bg-gradient-hero overflow-x-hidden">
+      {/* Spotlight Background Effect - Extended Header Area */}
+      <div className="absolute top-0 left-0 right-0 h-[500px] z-0">
         <CommunitySpotlight />
       </div>
 
@@ -202,7 +202,7 @@ const Leaderboard = () => {
       </section>
 
       {/* Giveaway Section */}
-      <section className="relative z-10 px-4 md:px-6 pb-8">
+      <section className="px-4 md:px-6 pb-8">
         <div className="max-w-4xl mx-auto space-y-6">
           <GiveawaySection 
             isLive={true}
@@ -220,7 +220,7 @@ const Leaderboard = () => {
       </section>
 
       {/* Leaderboard */}
-      <section className="relative z-10 px-4 md:px-6 pb-20">
+      <section className="px-4 md:px-6 pb-20">
         {/* Search */}
         <div className="max-w-4xl mx-auto mb-6">
           <div className="relative">
@@ -283,7 +283,7 @@ const Leaderboard = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 px-4 md:px-6 py-12 border-t border-secondary/20">
+      <footer className="px-4 md:px-6 py-12 border-t border-secondary/20">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <img 
