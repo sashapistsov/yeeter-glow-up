@@ -4,23 +4,23 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import { Trophy, ArrowLeft, Medal, Crown, Award, TrendingUp, Users } from "lucide-react";
 import { GiveawaySection, LeaderboardPeriod } from "@/components/GiveawaySection";
 
 // Mock leaderboard data
 const generateLeaderboardData = (communityId: string) => {
   const baseData = [
-    { name: "CryptoKing2024", points: 15420, change: "+12.5%", avatar: "/api/placeholder/40/40", rank: 1 },
-    { name: "YeetMaster", points: 14850, change: "+8.2%", avatar: "/api/placeholder/40/40", rank: 2 },
-    { name: "DiamondHands", points: 13990, change: "+15.1%", avatar: "/api/placeholder/40/40", rank: 3 },
-    { name: "MoonShot", points: 12750, change: "-2.3%", avatar: "/api/placeholder/40/40", rank: 4 },
-    { name: "HODLer4Life", points: 11900, change: "+5.7%", avatar: "/api/placeholder/40/40", rank: 5 },
-    { name: "AlphaTrade", points: 11200, change: "+9.4%", avatar: "/api/placeholder/40/40", rank: 6 },
-    { name: "BullMarket", points: 10850, change: "+3.1%", avatar: "/api/placeholder/40/40", rank: 7 },
-    { name: "DegenTrader", points: 9950, change: "-1.5%", avatar: "/api/placeholder/40/40", rank: 8 },
-    { name: "GigaChad", points: 9420, change: "+7.8%", avatar: "/api/placeholder/40/40", rank: 9 },
-    { name: "ProTrader", points: 8900, change: "+4.2%", avatar: "/api/placeholder/40/40", rank: 10 }
+    { name: "CryptoKing2024", volume: 15420, change: "+12.5%", avatar: "/api/placeholder/40/40", rank: 1 },
+    { name: "YeetMaster", volume: 14850, change: "+8.2%", avatar: "/api/placeholder/40/40", rank: 2 },
+    { name: "DiamondHands", volume: 13990, change: "+15.1%", avatar: "/api/placeholder/40/40", rank: 3 },
+    { name: "MoonShot", volume: 12750, change: "-2.3%", avatar: "/api/placeholder/40/40", rank: 4 },
+    { name: "HODLer4Life", volume: 11900, change: "+5.7%", avatar: "/api/placeholder/40/40", rank: 5 },
+    { name: "AlphaTrade", volume: 11200, change: "+9.4%", avatar: "/api/placeholder/40/40", rank: 6 },
+    { name: "BullMarket", volume: 10850, change: "+3.1%", avatar: "/api/placeholder/40/40", rank: 7 },
+    { name: "DegenTrader", volume: 9950, change: "-1.5%", avatar: "/api/placeholder/40/40", rank: 8 },
+    { name: "GigaChad", volume: 9420, change: "+7.8%", avatar: "/api/placeholder/40/40", rank: 9 },
+    { name: "ProTrader", volume: 8900, change: "+4.2%", avatar: "/api/placeholder/40/40", rank: 10 }
   ];
   return baseData;
 };
@@ -40,7 +40,6 @@ const communityNames: { [key: string]: string } = {
 const Leaderboard = () => {
   const { communityId } = useParams<{ communityId: string }>();
   const [mounted, setMounted] = useState(false);
-  const [activeTab, setActiveTab] = useState("weekly");
   
   const communityName = communityNames[communityId || ""] || "Unknown Community";
   const leaderboardData = generateLeaderboardData(communityId || "");
@@ -142,69 +141,59 @@ const Leaderboard = () => {
       {/* Leaderboard */}
       <section className="px-6 pb-20">
         <div className="max-w-4xl mx-auto">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8 bg-secondary border border-border">
-              <TabsTrigger value="daily" className="text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Daily</TabsTrigger>
-              <TabsTrigger value="weekly" className="text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Weekly</TabsTrigger>
-              <TabsTrigger value="monthly" className="text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Monthly</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value={activeTab}>
-              <div className="space-y-4">
-                {leaderboardData.map((user, index) => (
-                  <Card
-                    key={user.name}
-                    className={`${getRankBackground(user.rank)} hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-1 animate-scale-in backdrop-blur-sm`}
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center justify-center w-12 h-12">
-                            {getRankIcon(user.rank)}
-                          </div>
-                          
-                          <Avatar className="h-12 w-12 border-2 border-primary/30">
-                            <AvatarImage src={user.avatar} />
-                            <AvatarFallback className="bg-primary text-primary-foreground font-bold">
-                              {user.name.charAt(0)}
-                            </AvatarFallback>
-                          </Avatar>
-                          
-                          <div>
-                            <h3 className="font-semibold text-lg text-foreground">{user.name}</h3>
-                            <div className="flex items-center text-muted-foreground text-sm space-x-2">
-                              <Badge 
-                                variant="outline"
-                                className="text-xs border-muted-foreground/30 text-muted-foreground"
-                              >
-                                ELIGIBLE
-                              </Badge>
-                              <Badge 
-                                variant={user.change.startsWith('+') ? 'default' : 'destructive'}
-                                className={user.change.startsWith('+') 
-                                  ? 'bg-green-500/20 text-green-300 border-green-500/40 hover:bg-green-500/30' 
-                                  : 'bg-red-500/20 text-red-300 border-red-500/40 hover:bg-red-500/30'}
-                              >
-                                {user.change}
-                              </Badge>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div className="text-right">
-                          <div className="text-2xl font-bold text-primary">
-                            ${user.points.toLocaleString()}
-                          </div>
-                          <div className="text-sm text-muted-foreground">volume</div>
+          <div className="space-y-3">
+            {leaderboardData.map((user, index) => (
+              <Card
+                key={user.name}
+                className={`${getRankBackground(user.rank)} hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-1 animate-scale-in backdrop-blur-sm`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex items-center justify-center w-10 h-10">
+                        {getRankIcon(user.rank)}
+                      </div>
+                      
+                      <Avatar className="h-10 w-10 border-2 border-primary/30">
+                        <AvatarImage src={user.avatar} />
+                        <AvatarFallback className="bg-primary text-primary-foreground font-bold">
+                          {user.name.charAt(0)}
+                        </AvatarFallback>
+                      </Avatar>
+                      
+                      <div>
+                        <h3 className="font-semibold text-foreground">{user.name}</h3>
+                        <div className="flex items-center text-muted-foreground text-xs space-x-2">
+                          <Badge 
+                            variant="outline"
+                            className="text-xs border-muted-foreground/30 text-muted-foreground px-1.5 py-0.5"
+                          >
+                            ELIGIBLE
+                          </Badge>
+                          <Badge 
+                            variant={user.change.startsWith('+') ? 'default' : 'destructive'}
+                            className={`text-xs px-1.5 py-0.5 ${user.change.startsWith('+') 
+                              ? 'bg-green-500/20 text-green-300 border-green-500/40 hover:bg-green-500/30' 
+                              : 'bg-red-500/20 text-red-300 border-red-500/40 hover:bg-red-500/30'}`}
+                          >
+                            {user.change}
+                          </Badge>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+                    </div>
+                    
+                    <div className="text-right">
+                      <div className="text-xl font-bold text-primary">
+                        ${user.volume.toLocaleString()}
+                      </div>
+                      <div className="text-xs text-muted-foreground">Volume</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
 
           {/* Load More */}
           <div className="text-center mt-8">
