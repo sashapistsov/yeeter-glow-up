@@ -91,9 +91,9 @@ const Leaderboard = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center mb-4">
             <img 
-              src="/lovable-uploads/eafa8803-3886-4c9b-a642-60c01ce4f5d1.png" 
-              alt="Yeeterboards Logo" 
-              className="h-16 w-auto object-contain"
+              src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
+              alt="Boards Logo" 
+              className="h-12 w-auto object-contain"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -127,13 +127,6 @@ const Leaderboard = () => {
             </div>
             <h1 className="text-4xl font-bold mb-2">{communityName}</h1>
             <p className="text-muted-foreground text-lg mb-6">Community Leaderboard</p>
-            
-            <div className="flex flex-wrap justify-center gap-6 text-center">
-              <div className="flex items-center space-x-2">
-                <Users className="h-5 w-5 text-primary" />
-                <span className="text-sm text-muted-foreground">2.5K members</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -231,9 +224,9 @@ const Leaderboard = () => {
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <img 
-              src="/lovable-uploads/eafa8803-3886-4c9b-a642-60c01ce4f5d1.png" 
-              alt="Yeeterboards Logo" 
-              className="h-12 w-auto object-contain"
+              src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
+              alt="Boards Logo" 
+              className="h-8 w-auto object-contain"
             />
           </div>
           <p className="text-muted-foreground">
