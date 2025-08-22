@@ -91,9 +91,9 @@ const Leaderboard = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center mb-4">
             <img 
-              src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
+              src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
               alt="Boards Logo" 
-              className="h-24 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -117,9 +117,9 @@ const Leaderboard = () => {
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000`}>
             <div className="flex items-center justify-center mb-4">
-              <div className="w-20 h-20 rounded-full bg-gradient-primary p-0.5 animate-scale-in">
+              <div className="w-40 h-40 rounded-full bg-gradient-primary p-0.5 animate-scale-in">
                 <div className="w-full h-full rounded-full bg-secondary flex items-center justify-center">
-                  <span className="text-3xl font-bold text-primary">
+                  <span className="text-6xl font-bold text-primary">
                     {communityName.charAt(0)}
                   </span>
                 </div>
@@ -209,13 +209,6 @@ const Leaderboard = () => {
               </Card>
             ))}
           </div>
-
-          {/* Load More */}
-          <div className="text-center mt-8">
-            <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
-              Load More Rankings
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -224,13 +217,13 @@ const Leaderboard = () => {
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <img 
-              src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
+              src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
               alt="Boards Logo" 
-              className="h-16 w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
           </div>
           <p className="text-muted-foreground">
-            The ultimate community leaderboard platform
+            Built by DegenTy • Copyright © 2025
           </p>
         </div>
       </footer>
