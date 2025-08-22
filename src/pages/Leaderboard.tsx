@@ -145,28 +145,28 @@ const Leaderboard = () => {
 
         {/* Mobile Navigation */}
         <div className="md:hidden">
-          {/* Glass Header */}
+          {/* Single line header with logo and button */}
           <div className="bg-black/40 backdrop-blur-md border-b border-white/10 p-4">
-            <div className="flex justify-center">
+            <div className="flex justify-between items-center">
               <img 
                 src="/lovable-uploads/decc2792-658a-4017-ab20-3889eca34d9e.png" 
                 alt="Boards Logo" 
                 className="h-6 w-auto object-contain"
               />
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                Connect to Kick.com
+              </Button>
             </div>
           </div>
           
-          {/* Mobile Buttons */}
-          <div className="bg-black/30 backdrop-blur-sm p-4 space-y-3">
+          {/* Back button */}
+          <div className="bg-black/30 backdrop-blur-sm p-4">
             <Link to="/" className="block">
               <Button variant="ghost" size="sm" className="w-full text-muted-foreground hover:text-white justify-start">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Communities
               </Button>
             </Link>
-            <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-              Connect to Kick.com
-            </Button>
           </div>
         </div>
       </nav>
