@@ -114,8 +114,8 @@ const Leaderboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero overflow-x-hidden">
-      {/* Spotlight Background Effect - Full Coverage */}
-      <div className="absolute inset-0 z-0 h-screen">
+      {/* Spotlight Background Effect - Header Area Only */}
+      <div className="absolute top-0 left-0 right-0 h-96 z-0">
         <CommunitySpotlight />
       </div>
 
