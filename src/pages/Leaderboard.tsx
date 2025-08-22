@@ -114,6 +114,11 @@ const Leaderboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero overflow-x-hidden">
+      {/* Spotlight Background Effect - Full Coverage */}
+      <div className="absolute inset-0 z-0 h-screen">
+        <CommunitySpotlight />
+      </div>
+
       {/* Navigation */}
       <nav className="relative z-50">
         {/* Desktop Navigation */}
@@ -121,7 +126,7 @@ const Leaderboard = () => {
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-white">
+                <Button variant="ghost" size="sm" className="text-white/80 hover:text-white">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Back to Communities
                 </Button>
@@ -167,11 +172,7 @@ const Leaderboard = () => {
       </nav>
 
       {/* Header */}
-      <section className="relative px-4 md:px-6 py-12 overflow-hidden">
-        {/* Spotlight Background Effect */}
-        <div className="absolute inset-0 z-0">
-          <CommunitySpotlight />
-        </div>
+      <section className="relative px-4 md:px-6 py-12 overflow-hidden z-40">
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className={`text-center mb-8 animate-slide-up ${
