@@ -177,7 +177,7 @@ const Index = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           <Badge 
-            className={`mb-6 bg-primary/10 text-primary border-primary/20 animate-fade-in hidden md:inline-flex ${
+            className={`mb-6 bg-primary/10 text-primary border-primary/20 animate-fade-in hidden lg:inline-flex ${
               mounted ? 'opacity-100' : 'opacity-0'
             }`}
           >
