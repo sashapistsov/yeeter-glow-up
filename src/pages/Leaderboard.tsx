@@ -66,9 +66,9 @@ const Leaderboard = () => {
   const getRankBackground = (rank: number, status: string) => {
     const baseClasses = status === "ENTERED" ? "bg-gradient-to-r from-green-500/5 to-green-600/3 border-green-500/20" : "bg-card border-border";
     
-    if (rank === 1) return `bg-gradient-to-r from-yellow-500/10 to-yellow-600/5 border-yellow-500/20 shadow-lg ${status === "ENTERED" ? "shadow-green-500/20" : ""}`;
-    if (rank === 2) return `bg-gradient-to-r from-gray-400/10 to-gray-500/5 border-gray-400/20 shadow-lg ${status === "ENTERED" ? "shadow-green-500/20" : ""}`;
-    if (rank === 3) return `bg-gradient-to-r from-amber-600/10 to-amber-700/5 border-amber-600/20 shadow-lg ${status === "ENTERED" ? "shadow-green-500/20" : ""}`;
+    if (rank === 1) return "bg-gradient-to-r from-yellow-500/10 to-yellow-600/5 border-yellow-500/20 shadow-lg";
+    if (rank === 2) return "bg-gradient-to-r from-gray-400/10 to-gray-500/5 border-gray-400/20 shadow-lg";
+    if (rank === 3) return "bg-gradient-to-r from-amber-600/10 to-amber-700/5 border-amber-600/20 shadow-lg";
     return `${baseClasses} shadow-lg`;
   };
   
