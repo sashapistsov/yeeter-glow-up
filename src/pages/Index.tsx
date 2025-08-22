@@ -212,9 +212,9 @@ const Index = () => {
       <section className="px-6 py-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Communities in Competition</h2>
+            <h2 className="text-4xl font-bold mb-4">Communities</h2>
             <p className="text-muted-foreground text-lg mb-6">
-              Join the competition in your favorite communities
+              Find your favorite community
             </p>
             
             {/* Search */}
