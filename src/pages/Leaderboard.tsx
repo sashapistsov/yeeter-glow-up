@@ -88,14 +88,8 @@ const Leaderboard = () => {
     <div className="min-h-screen bg-gradient-hero">
       {/* Navigation */}
       <nav className="relative z-50 p-6 border-b border-secondary/20">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <Link to="/">
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Communities
-              </Button>
-            </Link>
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-center mb-4">
             <div className="flex items-center space-x-2">
               <Trophy className="h-6 w-6 text-primary" />
               <span className="text-lg font-bold bg-gradient-primary bg-clip-text text-transparent">
@@ -104,9 +98,17 @@ const Leaderboard = () => {
               <span className="text-lg font-bold text-primary">BOARDS</span>
             </div>
           </div>
-          <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
-            Connect Wallet
-          </Button>
+          <div className="flex items-center justify-between">
+            <Link to="/">
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Communities
+              </Button>
+            </Link>
+            <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
+              Connect to Kick.com
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -198,20 +200,12 @@ const Leaderboard = () => {
                       
                       <div>
                         <h3 className="font-semibold text-foreground">{user.name}</h3>
-                        <div className="flex items-center text-muted-foreground text-xs space-x-2">
+                        <div className="flex items-center text-muted-foreground text-xs">
                           <Badge 
                             variant="outline"
                             className={`text-xs px-1.5 py-0.5 ${getStatusBadgeStyle(user.status)}`}
                           >
                             {user.status}
-                          </Badge>
-                          <Badge 
-                            variant={user.change.startsWith('+') ? 'default' : 'destructive'}
-                            className={`text-xs px-1.5 py-0.5 ${user.change.startsWith('+') 
-                              ? 'bg-blue-500/20 text-blue-300 border-blue-500/40 hover:bg-blue-500/30' 
-                              : 'bg-red-500/20 text-red-300 border-red-500/40 hover:bg-red-500/30'}`}
-                          >
-                            {user.change}
                           </Badge>
                         </div>
                       </div>
