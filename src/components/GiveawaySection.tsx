@@ -187,7 +187,7 @@ export const LeaderboardPeriod = ({
           </div>
 
           {/* Start and end dates - Better mobile spacing */}
-          <div className="flex justify-between items-center pt-6 md:pt-8 space-x-2">
+          <div className="flex justify-between items-center pt-10 md:pt-8 space-x-2">
             <div className="text-center flex-1">
               <Badge variant="outline" className="mb-1 md:mb-2 border-primary/20 text-primary text-xs">
                 {formatDate(startDate)}
