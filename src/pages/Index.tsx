@@ -32,7 +32,7 @@ const communities = [
     name: "207Bear x Dizkontinued",
     image: bearImage,
     members: "2.5K",
-    isHighlighted: true
+    isHighlighted: false
   },
   {
     id: "btctalk",
