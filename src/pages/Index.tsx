@@ -80,7 +80,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
               alt="Boards Logo" 
-              className="h-8 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
           </div>
           <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
@@ -231,7 +231,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
               alt="Boards Logo" 
-              className="h-6 w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
           </div>
           <p className="text-muted-foreground">

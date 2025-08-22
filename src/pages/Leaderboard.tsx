@@ -93,7 +93,7 @@ const Leaderboard = () => {
             <img 
               src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
               alt="Boards Logo" 
-              className="h-12 w-auto object-contain"
+              className="h-24 w-auto object-contain"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -226,7 +226,7 @@ const Leaderboard = () => {
             <img 
               src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
               alt="Boards Logo" 
-              className="h-8 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
           </div>
           <p className="text-muted-foreground">
