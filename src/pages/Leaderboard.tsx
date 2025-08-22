@@ -102,7 +102,7 @@ const Leaderboard = () => {
             <img 
               src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
               alt="Boards Logo" 
-              className="h-16 w-auto object-contain"
+              className="h-12 w-auto object-contain md:h-16"
             />
             <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
               Connect to Kick.com
@@ -126,8 +126,8 @@ const Leaderboard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="text-4xl font-bold mb-2">{communityName}</h1>
-            <p className="text-muted-foreground text-lg mb-6">Community Leaderboard</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 px-4">{communityName}</h1>
+            <p className="text-muted-foreground text-base md:text-lg mb-6 hidden sm:block">Community Leaderboard</p>
           </div>
         </div>
       </section>
@@ -220,7 +220,7 @@ const Leaderboard = () => {
             <img 
               src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
               alt="Boards Logo" 
-              className="h-12 w-auto object-contain"
+              className="h-8 w-auto object-contain md:h-12"
             />
           </div>
           <p className="text-muted-foreground">
