@@ -61,6 +61,48 @@ const communities = [
     name: "Mando Minutes",
     image: "/api/placeholder/80/80",
     members: "5.6K"
+  },
+  {
+    id: "mirreytv",
+    name: "MirreyTV",
+    image: "/api/placeholder/80/80",
+    members: "7.2K"
+  },
+  {
+    id: "modernmarket",
+    name: "Modern Market",
+    image: "/api/placeholder/80/80",
+    members: "4.8K"
+  },
+  {
+    id: "morningminute",
+    name: "Morning Minute",
+    image: "/api/placeholder/80/80",
+    members: "6.1K"
+  },
+  {
+    id: "rektradio",
+    name: "Rekt Radio",
+    image: "/api/placeholder/80/80",
+    members: "11.3K"
+  },
+  {
+    id: "sellingrips",
+    name: "SellingRips",
+    image: "/api/placeholder/80/80",
+    members: "3.7K"
+  },
+  {
+    id: "tehepikduck",
+    name: "TEH EPIK DUCK",
+    image: "/api/placeholder/80/80",
+    members: "8.9K"
+  },
+  {
+    id: "wizardofsoho",
+    name: "Wizard of Soho",
+    image: "/api/placeholder/80/80",
+    members: "5.4K"
   }
 ];
 
@@ -211,10 +253,9 @@ const Index = () => {
               className="h-12 w-auto object-contain"
             />
           </div>
-          <div className="text-muted-foreground space-y-1">
-            <p>Built by DegenTy</p>
-            <p>Copyright 2025</p>
-          </div>
+          <p className="text-muted-foreground">
+            Built by DegenTy • Copyright © 2025
+          </p>
         </div>
       </footer>
     </div>
