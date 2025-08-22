@@ -6,6 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { Trophy, ArrowLeft, Medal, Crown, Award, TrendingUp, Users, Search } from "lucide-react";
+import goldMedal from "@/assets/gold-medal.gif";
+import silverMedal from "@/assets/silver-medal.gif";
+import bronzeMedal from "@/assets/bronze-medal.gif";
 import { Input } from "@/components/ui/input";
 import { GiveawaySection, LeaderboardPeriod } from "@/components/GiveawaySection";
 
@@ -57,9 +60,9 @@ const Leaderboard = () => {
   }, []);
 
   const getRankIcon = (rank: number) => {
-    if (rank === 1) return <Crown className="h-6 w-6 text-yellow-500" />;
-    if (rank === 2) return <Medal className="h-6 w-6 text-gray-400" />;
-    if (rank === 3) return <Award className="h-6 w-6 text-amber-600" />;
+    if (rank === 1) return <img src={goldMedal} alt="1st place" className="h-6 w-6" />;
+    if (rank === 2) return <img src={silverMedal} alt="2nd place" className="h-6 w-6" />;
+    if (rank === 3) return <img src={bronzeMedal} alt="3rd place" className="h-6 w-6" />;
     return <span className="text-lg font-bold text-muted-foreground">#{rank}</span>;
   };
 
