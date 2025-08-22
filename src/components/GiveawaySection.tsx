@@ -48,9 +48,9 @@ export const GiveawaySection = ({
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-3">
-            <Gift className="h-6 w-6 text-primary" />
+            <Gift className="h-6 w-6 text-primary hidden md:block" />
             <h3 className="text-xl font-bold text-foreground">{title}:</h3>
-            <Badge 
+            <Badge
               className={`${
                 isLive && timeLeft !== "EXPIRED" 
                   ? "bg-green-500 text-white animate-pulse" 

@@ -112,23 +112,53 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero">
+    <div className="min-h-screen bg-gradient-hero overflow-x-hidden">
       {/* Navigation */}
-      <nav className="relative z-50 p-6 border-b border-secondary/20">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between">
-            <Link to="/">
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-white">
+      <nav className="relative z-50 border-b border-secondary/20">
+        {/* Desktop Navigation */}
+        <div className="hidden md:block p-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-between">
+              <Link to="/">
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-white">
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  Back to Communities
+                </Button>
+              </Link>
+              <img 
+                src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
+                alt="Boards Logo" 
+                className="h-16 w-auto object-contain"
+              />
+              <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
+                Connect to Kick.com
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden">
+          {/* Glass Header */}
+          <div className="bg-black/20 backdrop-blur-md border-b border-white/10 p-4">
+            <div className="flex justify-center">
+              <img 
+                src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
+                alt="Boards Logo" 
+                className="h-8 w-auto object-contain"
+              />
+            </div>
+          </div>
+          
+          {/* Mobile Buttons */}
+          <div className="p-4 space-y-3">
+            <Link to="/" className="block">
+              <Button variant="ghost" size="sm" className="w-full text-muted-foreground hover:text-white justify-start">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Communities
               </Button>
             </Link>
-            <img 
-              src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
-              alt="Boards Logo" 
-              className="h-12 w-auto object-contain md:h-16"
-            />
-            <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
+            <Button variant="outline" className="w-full border-primary/20 text-primary hover:bg-primary/10">
               Connect to Kick.com
             </Button>
           </div>
@@ -136,7 +166,7 @@ const Leaderboard = () => {
       </nav>
 
       {/* Header */}
-      <section className="px-6 py-12">
+      <section className="px-4 md:px-6 py-12">
         <div className="max-w-7xl mx-auto">
           <div className={`text-center mb-8 animate-slide-up ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -165,7 +195,7 @@ const Leaderboard = () => {
       </section>
 
       {/* Giveaway Section */}
-      <section className="px-6 pb-8">
+      <section className="px-4 md:px-6 pb-8">
         <div className="max-w-4xl mx-auto space-y-6">
           <GiveawaySection 
             isLive={true}
@@ -183,7 +213,7 @@ const Leaderboard = () => {
       </section>
 
       {/* Leaderboard */}
-      <section className="px-6 pb-20">
+      <section className="px-4 md:px-6 pb-20">
         {/* Search */}
         <div className="max-w-4xl mx-auto mb-6">
           <div className="relative">
@@ -246,7 +276,7 @@ const Leaderboard = () => {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 py-12 border-t border-secondary/20">
+      <footer className="px-4 md:px-6 py-12 border-t border-secondary/20">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <img 
