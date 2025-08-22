@@ -130,7 +130,7 @@ const Leaderboard = () => {
                 alt="Boards Logo" 
                 className="h-16 w-auto object-contain"
               />
-              <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
                 Connect to Kick.com
               </Button>
             </div>
@@ -158,7 +158,7 @@ const Leaderboard = () => {
                 Back to Communities
               </Button>
             </Link>
-            <Button variant="outline" className="w-full border-primary/20 text-primary hover:bg-primary/10">
+            <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
               Connect to Kick.com
             </Button>
           </div>
