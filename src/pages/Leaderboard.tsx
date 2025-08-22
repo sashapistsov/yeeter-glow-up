@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, ArrowLeft, Medal, Crown, Award, TrendingUp, Users } from "lucide-react";
+import { GiveawaySection, LeaderboardPeriod } from "@/components/GiveawaySection";
 
 // Mock leaderboard data
 const generateLeaderboardData = (communityId: string) => {
@@ -120,6 +121,24 @@ const Leaderboard = () => {
         </div>
       </section>
 
+      {/* Giveaway Section */}
+      <section className="px-6 pb-8">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <GiveawaySection 
+            isLive={true}
+            endTime={new Date(Date.now() + 3 * 60 * 60 * 1000)} // 3 hours from now
+            title="Weekly Raffle"
+            description="Enter the codeword given by the raffle host before it expires to gain an entry to the weekly raffle. Winners announced every Sunday!"
+          />
+          
+          <LeaderboardPeriod
+            startDate={new Date(Date.now() - 5 * 24 * 60 * 60 * 1000)} // 5 days ago
+            endDate={new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)} // 2 days from now
+            isActive={true}
+          />
+        </div>
+      </section>
+
       {/* Leaderboard */}
       <section className="px-6 pb-20">
         <div className="max-w-4xl mx-auto">
@@ -154,7 +173,13 @@ const Leaderboard = () => {
                           
                           <div>
                             <h3 className="font-semibold text-lg text-foreground">{user.name}</h3>
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center text-muted-foreground text-sm space-x-2">
+                              <Badge 
+                                variant="outline"
+                                className="text-xs border-muted-foreground/30 text-muted-foreground"
+                              >
+                                ELIGIBLE
+                              </Badge>
                               <Badge 
                                 variant={user.change.startsWith('+') ? 'default' : 'destructive'}
                                 className={user.change.startsWith('+') 
@@ -169,9 +194,9 @@ const Leaderboard = () => {
                         
                         <div className="text-right">
                           <div className="text-2xl font-bold text-primary">
-                            {user.points.toLocaleString()}
+                            ${user.points.toLocaleString()}
                           </div>
-                          <div className="text-sm text-muted-foreground">points</div>
+                          <div className="text-sm text-muted-foreground">volume</div>
                         </div>
                       </div>
                     </CardContent>
