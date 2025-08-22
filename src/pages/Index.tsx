@@ -164,7 +164,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative px-6 py-12 md:py-20 overflow-hidden">
+      <section className="relative px-6 pt-32 pb-12 md:py-20 overflow-hidden">
         {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
