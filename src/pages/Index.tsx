@@ -6,103 +6,121 @@ import { Badge } from "@/components/ui/badge";
 import { Trophy, Users, TrendingUp, Star, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
+// Import community images
+import bearImage from "@/assets/communities/bear.jpg";
+import bitcoinTalkImage from "@/assets/communities/bitcoin-talk.png";
+import bodoggosImage from "@/assets/communities/bodoggos.jpg";
+import disgrazzeImage from "@/assets/communities/disgrazze.jpeg";
+import fomohourImage from "@/assets/communities/fomohour.jpg";
+import gccryptoImage from "@/assets/communities/gccrypto.jpeg";
+import jasperImage from "@/assets/communities/jasper.jpg";
+import kaitoImage from "@/assets/communities/kaito.jpeg";
+import mandoMinutesImage from "@/assets/communities/mando-minutes.png";
+import mirreytvImage from "@/assets/communities/mirreytv.jpeg";
+import modernMarketImage from "@/assets/communities/modern-market.jpeg";
+import morningMinuteImage from "@/assets/communities/morning-minute.png";
+import rektRadioImage from "@/assets/communities/rekt-radio.jpg";
+import sellingripsImage from "@/assets/communities/sellingrips.png";
+import duckImage from "@/assets/communities/duck.png";
+import wizardOfSohoImage from "@/assets/communities/wizard-of-soho.jpg";
+
 // Mock community data
 const communities = [
   {
     id: "207Bear_Dizkontinued",
     name: "207Bear x Dizkontinued",
-    image: "/api/placeholder/80/80",
+    image: bearImage,
     members: "2.5K",
     isHighlighted: true
   },
   {
     id: "btctalk",
     name: "Bitcoin Talk",
-    image: "/api/placeholder/80/80",
+    image: bitcoinTalkImage,
     members: "15.2K"
   },
   {
     id: "bodoggos",
     name: "Bodoggos",
-    image: "/api/placeholder/80/80",
+    image: bodoggosImage,
     members: "8.7K"
   },
   {
     id: "disgrazze",
     name: "Disgrazze",
-    image: "/api/placeholder/80/80",
+    image: disgrazzeImage,
     members: "3.1K"
   },
   {
     id: "fomohour",
     name: "Fomo Hour",
-    image: "/api/placeholder/80/80",
+    image: fomohourImage,
     members: "12.4K"
   },
   {
     id: "GCCrypto",
     name: "GC Crypto",
-    image: "/api/placeholder/80/80",
+    image: gccryptoImage,
     members: "6.8K"
   },
   {
     id: "jasper",
     name: "Jasper",
-    image: "/api/placeholder/80/80",
+    image: jasperImage,
     members: "4.2K"
   },
   {
     id: "kaitoAI_August",
     name: "KaitoAI - August",
-    image: "/api/placeholder/80/80",
+    image: kaitoImage,
     members: "9.3K"
   },
   {
     id: "mandominutes",
     name: "Mando Minutes",
-    image: "/api/placeholder/80/80",
+    image: mandoMinutesImage,
     members: "5.6K"
   },
   {
     id: "mirreytv",
     name: "MirreyTV",
-    image: "/api/placeholder/80/80",
+    image: mirreytvImage,
     members: "7.2K"
   },
   {
     id: "modernmarket",
     name: "Modern Market",
-    image: "/api/placeholder/80/80",
+    image: modernMarketImage,
     members: "4.8K"
   },
   {
     id: "morningminute",
     name: "Morning Minute",
-    image: "/api/placeholder/80/80",
+    image: morningMinuteImage,
     members: "6.1K"
   },
   {
     id: "rektradio",
     name: "Rekt Radio",
-    image: "/api/placeholder/80/80",
+    image: rektRadioImage,
     members: "11.3K"
   },
   {
     id: "sellingrips",
     name: "SellingRips",
-    image: "/api/placeholder/80/80",
+    image: sellingripsImage,
     members: "3.7K"
   },
   {
     id: "tehepikduck",
     name: "TEH EPIK DUCK",
-    image: "/api/placeholder/80/80",
+    image: duckImage,
     members: "8.9K"
   },
   {
     id: "wizardofsoho",
     name: "Wizard of Soho",
-    image: "/api/placeholder/80/80",
+    image: wizardOfSohoImage,
     members: "5.4K"
   }
 ];
@@ -225,12 +243,12 @@ const Index = () => {
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="relative">
-                      <div className="w-16 h-16 rounded-full bg-primary p-0.5">
-                        <div className="w-full h-full rounded-full bg-card flex items-center justify-center">
-                          <span className="text-2xl font-bold text-primary">
-                            {community.name.charAt(0)}
-                          </span>
-                        </div>
+                      <div className="w-16 h-16 rounded-full overflow-hidden bg-secondary">
+                        <img 
+                          src={community.image} 
+                          alt={community.name}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       {community.isHighlighted && (
                         <div className="absolute -top-1 -right-1">

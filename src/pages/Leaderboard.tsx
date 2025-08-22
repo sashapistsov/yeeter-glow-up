@@ -12,6 +12,17 @@ import bronzeMedal from "@/assets/bronze-medal.gif";
 import { Input } from "@/components/ui/input";
 import { GiveawaySection, LeaderboardPeriod } from "@/components/GiveawaySection";
 
+// Import community images
+import bearImage from "@/assets/communities/bear.jpg";
+import bitcoinTalkImage from "@/assets/communities/bitcoin-talk.png";
+import bodoggosImage from "@/assets/communities/bodoggos.jpg";
+import disgrazzeImage from "@/assets/communities/disgrazze.jpeg";
+import fomohourImage from "@/assets/communities/fomohour.jpg";
+import gccryptoImage from "@/assets/communities/gccrypto.jpeg";
+import jasperImage from "@/assets/communities/jasper.jpg";
+import kaitoImage from "@/assets/communities/kaito.jpeg";
+import mandoMinutesImage from "@/assets/communities/mando-minutes.png";
+
 // Mock leaderboard data
 const generateLeaderboardData = (communityId: string) => {
   const statuses = ["ELIGIBLE", "EXCLUDED", "ENTERED"];
@@ -42,12 +53,25 @@ const communityNames: { [key: string]: string } = {
   "mandominutes": "Mando Minutes"
 };
 
+const communityImages: { [key: string]: string } = {
+  "207Bear_Dizkontinued": bearImage,
+  "btctalk": bitcoinTalkImage,
+  "bodoggos": bodoggosImage,
+  "disgrazze": disgrazzeImage,
+  "fomohour": fomohourImage,
+  "GCCrypto": gccryptoImage,
+  "jasper": jasperImage,
+  "kaitoAI_August": kaitoImage,
+  "mandominutes": mandoMinutesImage
+};
+
 const Leaderboard = () => {
   const { communityId } = useParams<{ communityId: string }>();
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   
   const communityName = communityNames[communityId || ""] || "Unknown Community";
+  const communityImage = communityImages[communityId || ""];
   const allLeaderboardData = generateLeaderboardData(communityId || "");
   
   // Filter data based on search query
@@ -118,11 +142,19 @@ const Leaderboard = () => {
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000`}>
             <div className="flex items-center justify-center mb-4">
-              <div className="w-40 h-40 rounded-full bg-gradient-primary p-0.5 animate-scale-in">
-                <div className="w-full h-full rounded-full bg-secondary flex items-center justify-center">
-                  <span className="text-6xl font-bold text-primary">
-                    {communityName.charAt(0)}
-                  </span>
+              <div className="w-40 h-40 rounded-full bg-gradient-primary p-1 animate-scale-in">
+                <div className="w-full h-full rounded-full bg-secondary overflow-hidden flex items-center justify-center">
+                  {communityImage ? (
+                    <img 
+                      src={communityImage} 
+                      alt={communityName}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-6xl font-bold text-primary">
+                      {communityName.charAt(0)}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
