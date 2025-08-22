@@ -489,7 +489,7 @@ export function CommunitySpotlight() {
     <>
       <LightRays
         raysOrigin="top-center"
-        raysColor="#7A8EEF"
+        raysColor="#8A1B94"
         lightSpread={0.35}
         rayLength={2.5}
         fadeDistance={1.2}
