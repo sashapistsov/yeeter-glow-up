@@ -56,10 +56,10 @@ const Leaderboard = () => {
   };
 
   const getRankBackground = (rank: number) => {
-    if (rank === 1) return "bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 border-yellow-500/30";
-    if (rank === 2) return "bg-gradient-to-r from-gray-400/20 to-gray-500/20 border-gray-400/30";
-    if (rank === 3) return "bg-gradient-to-r from-amber-600/20 to-amber-700/20 border-amber-600/30";
-    return "bg-gradient-card border-secondary/20";
+    if (rank === 1) return "bg-gradient-to-r from-yellow-500/10 to-yellow-600/5 border-yellow-500/20 shadow-lg";
+    if (rank === 2) return "bg-gradient-to-r from-gray-400/10 to-gray-500/5 border-gray-400/20 shadow-lg";
+    if (rank === 3) return "bg-gradient-to-r from-amber-600/10 to-amber-700/5 border-amber-600/20 shadow-lg";
+    return "bg-card border-border shadow-lg";
   };
 
   return (
@@ -124,10 +124,10 @@ const Leaderboard = () => {
       <section className="px-6 pb-20">
         <div className="max-w-4xl mx-auto">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8 bg-secondary/50">
-              <TabsTrigger value="daily">Daily</TabsTrigger>
-              <TabsTrigger value="weekly">Weekly</TabsTrigger>
-              <TabsTrigger value="monthly">Monthly</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-3 mb-8 bg-secondary border border-border">
+              <TabsTrigger value="daily" className="text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Daily</TabsTrigger>
+              <TabsTrigger value="weekly" className="text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Weekly</TabsTrigger>
+              <TabsTrigger value="monthly" className="text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Monthly</TabsTrigger>
             </TabsList>
 
             <TabsContent value={activeTab}>
@@ -135,7 +135,7 @@ const Leaderboard = () => {
                 {leaderboardData.map((user, index) => (
                   <Card
                     key={user.name}
-                    className={`${getRankBackground(user.rank)} hover:border-primary/30 transition-all duration-500 hover:shadow-glow hover:-translate-y-1 animate-scale-in`}
+                    className={`${getRankBackground(user.rank)} hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-1 animate-scale-in backdrop-blur-sm`}
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <CardContent className="p-6">
@@ -145,19 +145,21 @@ const Leaderboard = () => {
                             {getRankIcon(user.rank)}
                           </div>
                           
-                          <Avatar className="h-12 w-12 border-2 border-primary/20">
+                          <Avatar className="h-12 w-12 border-2 border-primary/30">
                             <AvatarImage src={user.avatar} />
-                            <AvatarFallback className="bg-gradient-primary text-white">
+                            <AvatarFallback className="bg-primary text-primary-foreground font-bold">
                               {user.name.charAt(0)}
                             </AvatarFallback>
                           </Avatar>
                           
                           <div>
-                            <h3 className="font-semibold text-lg">{user.name}</h3>
+                            <h3 className="font-semibold text-lg text-foreground">{user.name}</h3>
                             <div className="flex items-center space-x-2">
                               <Badge 
                                 variant={user.change.startsWith('+') ? 'default' : 'destructive'}
-                                className={user.change.startsWith('+') ? 'bg-green-500/20 text-green-400 border-green-500/30' : ''}
+                                className={user.change.startsWith('+') 
+                                  ? 'bg-green-500/20 text-green-300 border-green-500/40 hover:bg-green-500/30' 
+                                  : 'bg-red-500/20 text-red-300 border-red-500/40 hover:bg-red-500/30'}
                               >
                                 {user.change}
                               </Badge>

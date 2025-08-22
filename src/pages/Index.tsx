@@ -157,7 +157,7 @@ const Index = () => {
             {communities.map((community, index) => (
               <Card
                 key={community.id}
-                className={`group bg-gradient-card border-secondary/20 hover:border-primary/30 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 animate-scale-in ${
+                className={`group bg-card border-border hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 animate-scale-in backdrop-blur-sm ${
                   community.isHighlighted ? 'border-primary/50 shadow-glow' : ''
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
@@ -165,8 +165,8 @@ const Index = () => {
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="relative">
-                      <div className="w-16 h-16 rounded-full bg-gradient-primary p-0.5">
-                        <div className="w-full h-full rounded-full bg-secondary flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-primary p-0.5">
+                        <div className="w-full h-full rounded-full bg-card flex items-center justify-center">
                           <span className="text-2xl font-bold text-primary">
                             {community.name.charAt(0)}
                           </span>
@@ -179,7 +179,7 @@ const Index = () => {
                       )}
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
+                      <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors text-foreground">
                         {community.name}
                       </h3>
                       <div className="flex items-center text-muted-foreground text-sm">
@@ -191,7 +191,7 @@ const Index = () => {
                   
                   <Link to={`/leaderboards/${community.id}`}>
                     <Button 
-                      className="w-full bg-secondary hover:bg-primary transition-all duration-300 group-hover:bg-primary"
+                      className="w-full bg-secondary hover:bg-primary transition-all duration-300 group-hover:bg-primary text-secondary-foreground group-hover:text-primary-foreground"
                     >
                       View Rankings
                       <Trophy className="ml-2 h-4 w-4" />
