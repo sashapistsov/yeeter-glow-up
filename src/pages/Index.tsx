@@ -77,11 +77,11 @@ const Index = () => {
       <nav className="relative z-50 p-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Trophy className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              YEETER
-            </span>
-            <span className="text-2xl font-bold text-primary">BOARDS</span>
+            <img 
+              src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
+              alt="Boards Logo" 
+              className="h-8 w-auto object-contain"
+            />
           </div>
           <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
             Connect Wallet
@@ -228,11 +228,11 @@ const Index = () => {
       <footer className="px-6 py-12 border-t border-secondary/20">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <Trophy className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              YEETER
-            </span>
-            <span className="text-xl font-bold text-primary">BOARDS</span>
+            <img 
+              src="/lovable-uploads/dac2b823-067c-4665-a3c5-d8f98846a854.png" 
+              alt="Boards Logo" 
+              className="h-6 w-auto object-contain"
+            />
           </div>
           <p className="text-muted-foreground">
             The ultimate community leaderboard platform
