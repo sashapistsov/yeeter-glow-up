@@ -141,7 +141,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-hero">
+    <div className="min-h-screen bg-gradient-hero">  
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-50 p-6 bg-transparent">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
