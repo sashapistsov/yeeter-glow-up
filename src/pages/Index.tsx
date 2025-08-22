@@ -184,7 +184,7 @@ const Index = () => {
             Win prizes every week
           </Badge>
           
-          <h1 className={`text-4xl md:text-6xl lg:text-8xl font-bold mb-4 md:mb-6 animate-slide-up ${
+          <h1 className={`text-4xl md:text-6xl lg:text-8xl font-bold mb-4 md:mb-6 px-4 md:px-0 animate-slide-up ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-1000 delay-200`}>
             <span className="text-foreground">
