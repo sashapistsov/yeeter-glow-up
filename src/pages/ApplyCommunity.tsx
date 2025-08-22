@@ -9,12 +9,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { ArrowLeft, Users, MessageSquare, Share, Zap } from "lucide-react";
+import { ArrowLeft, Users, MessageSquare, Globe, Zap, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const applicationSchema = z.object({
   communityName: z.string().min(2, "Community name must be at least 2 characters"),
-  description: z.string().min(10, "Description must be at least 10 characters"),
+  email: z.string().email("Please enter a valid email address"),
   yeetUsername: z.string().min(1, "Yeet username is required"),
   telegramHandle: z.string().min(1, "Telegram handle is required"),
   twitterUrl: z.string().url("Please enter a valid Twitter URL").optional().or(z.literal("")),
@@ -33,7 +33,7 @@ const ApplyCommunity = () => {
     resolver: zodResolver(applicationSchema),
     defaultValues: {
       communityName: "",
-      description: "",
+      email: "",
       yeetUsername: "",
       telegramHandle: "",
       twitterUrl: "",
@@ -151,16 +151,20 @@ const ApplyCommunity = () => {
 
                     <FormField
                       control={form.control}
-                      name="description"
+                      name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground">Description</FormLabel>
+                          <FormLabel className="text-foreground">Email Address</FormLabel>
                           <FormControl>
-                            <Textarea 
-                              placeholder="Describe your community, its purpose, and what makes it unique..."
-                              className="min-h-[100px] bg-secondary/50 border-border focus:border-primary/50"
-                              {...field} 
-                            />
+                            <div className="relative">
+                              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                              <Input 
+                                type="email"
+                                placeholder="your@email.com" 
+                                className="pl-10 h-12 bg-secondary/50 border-border focus:border-primary/50"
+                                {...field} 
+                              />
+                            </div>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -221,7 +225,7 @@ const ApplyCommunity = () => {
                   {/* Social Links */}
                   <div className="space-y-4">
                     <div className="flex items-center space-x-2 mb-4">
-                      <Share className="h-5 w-5 text-primary" />
+                      <Globe className="h-5 w-5 text-primary" />
                       <h3 className="text-lg font-semibold text-foreground">Social Links</h3>
                     </div>
                     
