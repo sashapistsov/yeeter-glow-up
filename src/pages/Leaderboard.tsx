@@ -64,7 +64,7 @@ const Leaderboard = () => {
   };
 
   const getRankBackground = (rank: number, status: string) => {
-    const baseClasses = status === "ENTERED" ? "bg-gradient-to-r from-green-500/5 to-green-600/3 border-green-500/20" : "bg-card border-border";
+    const baseClasses = status === "ENTERED" ? "bg-gradient-to-r from-green-500/15 to-green-600/8 border-green-400/40" : "bg-card border-border";
     
     if (rank === 1) return "bg-gradient-to-r from-yellow-500/10 to-yellow-600/5 border-yellow-500/20 shadow-lg";
     if (rank === 2) return "bg-gradient-to-r from-gray-400/10 to-gray-500/5 border-gray-400/20 shadow-lg";
@@ -75,7 +75,7 @@ const Leaderboard = () => {
   const getStatusBadgeStyle = (status: string) => {
     switch (status) {
       case "ENTERED":
-        return "bg-green-500/20 text-green-300 border-green-500/40 hover:bg-green-500/30";
+        return "bg-green-500/30 text-green-200 border-green-400/60 hover:bg-green-500/40";
       case "EXCLUDED":
         return "bg-red-500/20 text-red-300 border-red-500/40 hover:bg-red-500/30";
       case "ELIGIBLE":
@@ -89,13 +89,6 @@ const Leaderboard = () => {
       {/* Navigation */}
       <nav className="relative z-50 p-6 border-b border-secondary/20">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center mb-4">
-            <img 
-              src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
-              alt="Boards Logo" 
-              className="h-16 w-auto object-contain"
-            />
-          </div>
           <div className="flex items-center justify-between">
             <Link to="/">
               <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-white">
@@ -103,6 +96,11 @@ const Leaderboard = () => {
                 Back to Communities
               </Button>
             </Link>
+            <img 
+              src="/lovable-uploads/c6774c91-c8ec-4511-bc74-47506011436e.png" 
+              alt="Boards Logo" 
+              className="h-16 w-auto object-contain"
+            />
             <Button variant="outline" className="border-primary/20 text-primary hover:bg-primary/10">
               Connect to Kick.com
             </Button>
