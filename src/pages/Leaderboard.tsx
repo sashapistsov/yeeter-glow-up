@@ -241,7 +241,7 @@ const Leaderboard = () => {
           </div>
         </div>
         <div className="max-w-4xl mx-auto">
-          <div className="space-y-3">
+          <div className="space-y-3 min-h-[800px] md:min-h-[600px]">
             {leaderboardData.map((user, index) => (
               <Card
                 key={user.name}
