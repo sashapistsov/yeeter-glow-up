@@ -20,6 +20,7 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
   const [isSpinning, setIsSpinning] = useState(false);
   const [winners, setWinners] = useState<Array<{ name: string; rank: number }>>([]);
   const [selectedWinner, setSelectedWinner] = useState<string | null>(null);
+  const [winningSegment, setWinningSegment] = useState<number | null>(null);
   const [rotation, setRotation] = useState(0);
   const wheelRef = useRef<HTMLDivElement>(null);
 
@@ -32,12 +33,19 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
   const segments = spinEligibleUsers.length;
   const segmentAngle = 360 / segments;
 
-  const getSegmentColor = (index: number) => {
+  const getSegmentColor = (index: number, isWinning: boolean = false) => {
+    if (isWinning) {
+      return "linear-gradient(45deg, hsl(var(--primary)), hsl(var(--primary)/0.8))";
+    }
     const colors = [
-      "hsl(var(--primary))",
-      "hsl(var(--secondary))",
-      "hsl(var(--accent))",
-      "hsl(var(--muted))",
+      "#3B82F6", // Blue
+      "#10B981", // Green  
+      "#F59E0B", // Yellow
+      "#EF4444", // Red
+      "#8B5CF6", // Purple
+      "#06B6D4", // Cyan
+      "#F97316", // Orange
+      "#84CC16", // Lime
     ];
     return colors[index % colors.length];
   };
@@ -47,6 +55,7 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
 
     setIsSpinning(true);
     setSelectedWinner(null);
+    setWinningSegment(null);
 
     // Random spin between 3-6 full rotations plus random segment
     const fullRotations = 3 + Math.random() * 3;
@@ -61,6 +70,7 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
       const winnerIndex = Math.floor((360 - normalizedRotation) / segmentAngle) % segments;
       const winner = spinEligibleUsers[winnerIndex];
       
+      setWinningSegment(winnerIndex);
       setSelectedWinner(winner.name);
       setWinners(prev => [...prev, { name: winner.name, rank: winner.rank }]);
       setIsSpinning(false);
@@ -69,18 +79,21 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
 
   const resetWheel = () => {
     setSelectedWinner(null);
+    setWinningSegment(null);
     setIsSpinning(false);
   };
 
   const clearWinners = () => {
     setWinners([]);
     setSelectedWinner(null);
+    setWinningSegment(null);
   };
 
   useEffect(() => {
     if (!isOpen) {
       setRotation(0);
       setSelectedWinner(null);
+      setWinningSegment(null);
       setIsSpinning(false);
     }
   }, [isOpen]);
@@ -118,8 +131,8 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
           {/* Wheel Container */}
           <div className="relative flex items-center justify-center">
             {/* Pointer */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 z-10">
-              <div className="w-0 h-0 border-l-4 border-r-4 border-b-8 border-l-transparent border-r-transparent border-b-primary"></div>
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-3 z-20">
+              <div className="w-0 h-0 border-l-6 border-r-6 border-b-12 border-l-transparent border-r-transparent border-b-primary shadow-lg"></div>
             </div>
 
             {/* Wheel */}
@@ -127,7 +140,7 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
               <div
                 ref={wheelRef}
                 className={cn(
-                  "w-80 h-80 rounded-full border-4 border-primary overflow-hidden transition-transform",
+                  "w-80 h-80 rounded-full border-4 border-primary overflow-hidden transition-transform shadow-2xl",
                   isSpinning ? "duration-[3s] ease-out" : "duration-300"
                 )}
                 style={{
@@ -136,12 +149,16 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
               >
                 {spinEligibleUsers.map((user, index) => {
                   const startAngle = index * segmentAngle;
+                  const isWinning = winningSegment === index && !isSpinning;
                   return (
                     <div
                       key={user.name}
-                      className="absolute w-full h-full flex items-center justify-center text-xs font-medium text-white"
+                      className={cn(
+                        "absolute w-full h-full transition-all duration-500",
+                        isWinning && "z-10"
+                      )}
                       style={{
-                        background: getSegmentColor(index),
+                        background: getSegmentColor(index, isWinning),
                         clipPath: `polygon(50% 50%, ${
                           50 + 50 * Math.cos((startAngle - 90) * Math.PI / 180)
                         }% ${
@@ -153,22 +170,49 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
                         }%)`,
                         transform: `rotate(${startAngle + segmentAngle / 2}deg)`,
                         transformOrigin: "50% 50%",
+                        boxShadow: isWinning ? "inset 0 0 20px rgba(255,255,255,0.3)" : "none",
                       }}
                     >
-                      <span
-                        className="absolute whitespace-nowrap text-center px-1 truncate max-w-[60px]"
+                      {/* User name */}
+                      <div
+                        className="absolute flex items-center justify-center"
                         style={{
                           transform: `translate(-50%, -50%) rotate(-${startAngle + segmentAngle / 2}deg)`,
-                          left: "75%",
+                          left: "70%",
                           top: "50%",
+                          width: "80px",
+                          height: "20px",
                         }}
                       >
-                        {user.name}
-                      </span>
+                        <span
+                          className={cn(
+                            "text-white font-bold text-center truncate px-1 transition-all duration-300",
+                            segments > 8 ? "text-xs" : "text-sm",
+                            isWinning && "text-black drop-shadow-lg scale-110"
+                          )}
+                          style={{
+                            textShadow: isWinning ? "1px 1px 2px rgba(255,255,255,0.8)" : "1px 1px 2px rgba(0,0,0,0.8)",
+                          }}
+                        >
+                          {user.name}
+                        </span>
+                      </div>
+                      
+                      {/* Segment border */}
+                      <div
+                        className="absolute inset-0 border-r-2 border-white/20"
+                        style={{
+                          transform: `rotate(${startAngle + segmentAngle / 2}deg)`,
+                          transformOrigin: "50% 50%",
+                        }}
+                      />
                     </div>
                   );
                 })}
               </div>
+              
+              {/* Center circle */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg z-10"></div>
             </div>
           </div>
 
