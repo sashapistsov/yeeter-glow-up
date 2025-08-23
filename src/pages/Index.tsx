@@ -168,7 +168,7 @@ const Index = () => {
         {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/lovable-uploads/1ada8b13-4538-41a4-878e-8d60e406960a.png" 
+            src="/lovable-uploads/b0187c7f-435c-41f9-922f-6363f9df9e85.png" 
             alt="Desert UFO Background" 
             className="w-full h-full object-cover"
           />
@@ -228,9 +228,9 @@ const Index = () => {
       <section id="communities-section" className="px-6 py-12 md:py-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-4xl font-bold mb-4">Communities</h2>
+            <h2 className="text-4xl font-bold mb-4">Find your community</h2>
             <p className="text-muted-foreground text-lg mb-6">
-              Find your favorite community
+              find and join your favorite creators community
             </p>
             
             {/* Search */}
