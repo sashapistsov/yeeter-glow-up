@@ -33,6 +33,12 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
   const segments = spinEligibleUsers.length;
   const segmentAngle = 360 / segments;
 
+  const getBadgeImage = (rank: number) => {
+    if (rank <= 3) return "/lovable-uploads/241f255b-a9aa-42b1-a4dc-da2c29ec8427.png"; // Diamond
+    if (rank <= 7) return "/lovable-uploads/f65e140f-e855-4167-8f1e-f428ff0cf7ec.png"; // Silver
+    return "/lovable-uploads/b23f9a0d-a110-4ce0-9bae-e84de426c673.png"; // Bronze
+  };
+
   const getSegmentColor = (index: number, isWinning: boolean = false) => {
     if (isWinning) {
       return "linear-gradient(45deg, hsl(var(--primary)), hsl(var(--primary)/0.8))";
@@ -176,7 +182,7 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
                         boxShadow: isWinning ? "inset 0 0 20px rgba(255,255,255,0.3)" : "none",
                       }}
                     >
-                      {/* User name positioned along the segment */}
+                      {/* User name positioned more prominently on segment */}
                       <div
                         className="absolute"
                         style={{
@@ -189,22 +195,24 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
                         <div
                           className="flex items-center justify-center"
                           style={{
-                            transform: "translate(60px, -8px)",
-                            width: "100px",
-                            height: "16px",
+                            transform: "translate(45px, -10px)",
+                            width: "80px",
+                            height: "20px",
                           }}
                         >
                           <span
                             className={cn(
-                              "font-bold text-center truncate px-1 transition-all duration-300 block w-full text-white",
-                              segments > 12 ? "text-xs" : segments > 8 ? "text-sm" : "text-base",
-                              isWinning && "scale-110 drop-shadow-lg"
+                              "font-black text-center block w-full text-white",
+                              segments > 12 ? "text-[10px]" : segments > 8 ? "text-xs" : "text-sm",
+                              isWinning && "scale-125 drop-shadow-lg"
                             )}
                             style={{
-                              textShadow: "2px 2px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.7), -1px -1px 2px rgba(0,0,0,0.5)",
+                              textShadow: "2px 2px 6px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,0.8), -1px -1px 3px rgba(0,0,0,0.7), 1px 1px 0px rgba(0,0,0,1)",
                               transform: `rotate(-${textAngle}deg)`,
-                              lineHeight: "1",
+                              lineHeight: "1.1",
                               fontWeight: "900",
+                              letterSpacing: "0.5px",
+                              WebkitTextStroke: "1px rgba(0,0,0,0.5)",
                             }}
                           >
                             {user.name}
@@ -287,7 +295,13 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
                     className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg border border-border"
                   >
                     <div className="flex items-center gap-2">
-                      <Trophy className="h-4 w-4 text-primary" />
+                      <div className="h-6 w-6 rounded-full overflow-hidden bg-secondary/20">
+                        <img 
+                          src={getBadgeImage(winner.rank)} 
+                          alt="User Badge"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       <span className="font-medium">{winner.name}</span>
                     </div>
                     <Badge variant="outline" className="text-xs">
