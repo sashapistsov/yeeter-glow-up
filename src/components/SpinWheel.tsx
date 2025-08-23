@@ -130,11 +130,11 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
         <div className="space-y-6">
           {/* Wheel Container */}
           <div className="relative flex items-center justify-center">
-            {/* Large, Clear Pointer Arrow */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4 z-30">
+            {/* Large, Clear White Pointer Arrow that overlaps wheel */}
+            <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-30">
               <div className="flex flex-col items-center">
-                <div className="w-0 h-0 border-l-8 border-r-8 border-b-16 border-l-transparent border-r-transparent border-b-primary drop-shadow-lg"></div>
-                <div className="w-4 h-2 bg-primary rounded-b-lg"></div>
+                <div className="w-0 h-0 border-l-8 border-r-8 border-b-16 border-l-transparent border-r-transparent border-b-white drop-shadow-lg"></div>
+                <div className="w-4 h-2 bg-white rounded-b-lg shadow-lg"></div>
               </div>
             </div>
 
@@ -196,16 +196,15 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
                         >
                           <span
                             className={cn(
-                              "font-bold text-center truncate px-1 transition-all duration-300 block w-full",
+                              "font-bold text-center truncate px-1 transition-all duration-300 block w-full text-white",
                               segments > 12 ? "text-xs" : segments > 8 ? "text-sm" : "text-base",
-                              isWinning ? "text-black drop-shadow-lg scale-110" : "text-white"
+                              isWinning && "scale-110 drop-shadow-lg"
                             )}
                             style={{
-                              textShadow: isWinning 
-                                ? "0 0 8px rgba(255,255,255,0.8), 1px 1px 2px rgba(0,0,0,0.8)" 
-                                : "1px 1px 3px rgba(0,0,0,0.9), 0 0 5px rgba(0,0,0,0.5)",
+                              textShadow: "2px 2px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.7), -1px -1px 2px rgba(0,0,0,0.5)",
                               transform: `rotate(-${textAngle}deg)`,
                               lineHeight: "1",
+                              fontWeight: "900",
                             }}
                           >
                             {user.name}
