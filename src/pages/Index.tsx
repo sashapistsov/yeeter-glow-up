@@ -230,7 +230,7 @@ const Index = () => {
           <div className="text-center mb-8 md:mb-16">
             <h2 className="text-4xl font-bold mb-4">Find your community</h2>
             <p className="text-muted-foreground text-lg mb-6">
-              find and join your favorite creators community
+              Find and join your favorite creator's community
             </p>
             
             {/* Search */}
@@ -256,7 +256,12 @@ const Index = () => {
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardContent className="p-6">
+                <CardContent className="p-6 relative">
+                  {community.id === "btctalk" && (
+                    <div className="absolute top-4 right-4">
+                      <Settings className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                  )}
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="relative">
                       <div className="w-16 h-16 rounded-full overflow-hidden bg-secondary">
