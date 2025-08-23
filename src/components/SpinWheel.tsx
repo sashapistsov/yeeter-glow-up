@@ -130,9 +130,12 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
         <div className="space-y-6">
           {/* Wheel Container */}
           <div className="relative flex items-center justify-center">
-            {/* Pointer */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-3 z-20">
-              <div className="w-0 h-0 border-l-6 border-r-6 border-b-12 border-l-transparent border-r-transparent border-b-primary shadow-lg"></div>
+            {/* Large, Clear Pointer Arrow */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4 z-30">
+              <div className="flex flex-col items-center">
+                <div className="w-0 h-0 border-l-8 border-r-8 border-b-16 border-l-transparent border-r-transparent border-b-primary drop-shadow-lg"></div>
+                <div className="w-4 h-2 bg-primary rounded-b-lg"></div>
+              </div>
             </div>
 
             {/* Wheel */}
@@ -150,6 +153,8 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
                 {spinEligibleUsers.map((user, index) => {
                   const startAngle = index * segmentAngle;
                   const isWinning = winningSegment === index && !isSpinning;
+                  const textAngle = startAngle + segmentAngle / 2;
+                  
                   return (
                     <div
                       key={user.name}
@@ -168,42 +173,53 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
                         }% ${
                           50 + 50 * Math.sin((startAngle + segmentAngle - 90) * Math.PI / 180)
                         }%)`,
-                        transform: `rotate(${startAngle + segmentAngle / 2}deg)`,
-                        transformOrigin: "50% 50%",
                         boxShadow: isWinning ? "inset 0 0 20px rgba(255,255,255,0.3)" : "none",
                       }}
                     >
-                      {/* User name */}
+                      {/* User name positioned along the segment */}
                       <div
-                        className="absolute flex items-center justify-center"
+                        className="absolute"
                         style={{
-                          transform: `translate(-50%, -50%) rotate(-${startAngle + segmentAngle / 2}deg)`,
-                          left: "70%",
+                          left: "50%",
                           top: "50%",
-                          width: "80px",
-                          height: "20px",
+                          transform: `rotate(${textAngle}deg)`,
+                          transformOrigin: "0 0",
                         }}
                       >
-                        <span
-                          className={cn(
-                            "text-white font-bold text-center truncate px-1 transition-all duration-300",
-                            segments > 8 ? "text-xs" : "text-sm",
-                            isWinning && "text-black drop-shadow-lg scale-110"
-                          )}
+                        <div
+                          className="flex items-center justify-center"
                           style={{
-                            textShadow: isWinning ? "1px 1px 2px rgba(255,255,255,0.8)" : "1px 1px 2px rgba(0,0,0,0.8)",
+                            transform: "translate(60px, -8px)",
+                            width: "100px",
+                            height: "16px",
                           }}
                         >
-                          {user.name}
-                        </span>
+                          <span
+                            className={cn(
+                              "font-bold text-center truncate px-1 transition-all duration-300 block w-full",
+                              segments > 12 ? "text-xs" : segments > 8 ? "text-sm" : "text-base",
+                              isWinning ? "text-black drop-shadow-lg scale-110" : "text-white"
+                            )}
+                            style={{
+                              textShadow: isWinning 
+                                ? "0 0 8px rgba(255,255,255,0.8), 1px 1px 2px rgba(0,0,0,0.8)" 
+                                : "1px 1px 3px rgba(0,0,0,0.9), 0 0 5px rgba(0,0,0,0.5)",
+                              transform: `rotate(-${textAngle}deg)`,
+                              lineHeight: "1",
+                            }}
+                          >
+                            {user.name}
+                          </span>
+                        </div>
                       </div>
                       
-                      {/* Segment border */}
+                      {/* Segment border lines */}
                       <div
-                        className="absolute inset-0 border-r-2 border-white/20"
+                        className="absolute inset-0"
                         style={{
-                          transform: `rotate(${startAngle + segmentAngle / 2}deg)`,
+                          borderRight: "2px solid rgba(255,255,255,0.3)",
                           transformOrigin: "50% 50%",
+                          transform: `rotate(${segmentAngle}deg)`,
                         }}
                       />
                     </div>
@@ -212,7 +228,9 @@ const SpinWheel = ({ isOpen, onClose, eligibleUsers }: SpinWheelProps) => {
               </div>
               
               {/* Center circle */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg z-10"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-primary rounded-full border-4 border-white shadow-lg z-20 flex items-center justify-center">
+                <div className="w-4 h-4 bg-white rounded-full"></div>
+              </div>
             </div>
           </div>
 
