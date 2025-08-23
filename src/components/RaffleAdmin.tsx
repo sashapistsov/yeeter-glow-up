@@ -5,29 +5,36 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Dice6, Eye, Users, TrendingUp } from "lucide-react";
+import SpinWheel from "./SpinWheel";
 
 interface RaffleAdminProps {
   communityName: string;
   totalMembers: string;
+  eligibleUsers?: Array<{
+    name: string;
+    rank: number;
+    volume: number;
+    status: string;
+  }>;
 }
 
-const RaffleAdmin = ({ communityName, totalMembers }: RaffleAdminProps) => {
+const RaffleAdmin = ({ communityName, totalMembers, eligibleUsers = [] }: RaffleAdminProps) => {
   const [minRanking, setMinRanking] = useState("");
   const [minVolume, setMinVolume] = useState("");
   const [eligibleEntries, setEligibleEntries] = useState(142);
+  const [showWheel, setShowWheel] = useState(false);
+
+  // Filter eligible users based on criteria
+  const filteredEligibleUsers = eligibleUsers.filter(user => {
+    const meetsRanking = !minRanking || user.rank <= parseInt(minRanking);
+    const meetsVolume = !minVolume || user.volume >= parseInt(minVolume);
+    const isEligible = user.status === "ELIGIBLE" || user.status === "ENTERED";
+    return meetsRanking && meetsVolume && isEligible;
+  });
 
   const handleCalculateEntries = () => {
-    // Mock calculation - in real app this would call an API
-    const ranking = parseInt(minRanking) || 0;
-    const volume = parseInt(minVolume) || 0;
-    const baseMembers = parseInt(totalMembers.replace('K', '')) * 1000;
-    
-    // Simple logic to reduce eligible entries based on criteria
-    let eligible = baseMembers;
-    if (ranking > 0) eligible = Math.floor(eligible * 0.7);
-    if (volume > 0) eligible = Math.floor(eligible * 0.5);
-    
-    setEligibleEntries(Math.max(1, eligible));
+    // Use actual filtered users count
+    setEligibleEntries(filteredEligibleUsers.length);
   };
 
   return (
@@ -92,7 +99,7 @@ const RaffleAdmin = ({ communityName, totalMembers }: RaffleAdminProps) => {
                 <span className="font-medium">Eligible Entries</span>
               </div>
               <Badge variant="outline" className="text-lg px-3 py-1 border-primary/30 text-primary">
-                {eligibleEntries.toLocaleString()}
+                {filteredEligibleUsers.length.toLocaleString()}
               </Badge>
             </div>
           </CardContent>
@@ -102,7 +109,8 @@ const RaffleAdmin = ({ communityName, totalMembers }: RaffleAdminProps) => {
         <div className="flex gap-3">
           <Button 
             className="flex-1 bg-primary hover:bg-primary/90 shadow-glow"
-            disabled={eligibleEntries === 0}
+            disabled={filteredEligibleUsers.length === 0}
+            onClick={() => setShowWheel(true)}
           >
             <Eye className="mr-2 h-4 w-4" />
             View Wheel
@@ -123,6 +131,13 @@ const RaffleAdmin = ({ communityName, totalMembers }: RaffleAdminProps) => {
           </div>
         </div>
       </CardContent>
+
+      {/* Spin Wheel Modal */}
+      <SpinWheel
+        isOpen={showWheel}
+        onClose={() => setShowWheel(false)}
+        eligibleUsers={filteredEligibleUsers}
+      />
     </Card>
   );
 };
